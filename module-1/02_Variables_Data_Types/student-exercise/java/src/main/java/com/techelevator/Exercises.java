@@ -533,6 +533,31 @@ public class Exercises {
         Challenge: How many days will it take the pair to paint 623 rooms assuming they work 8 hours a day?.
         */
 
+		int totalSF = 12 * 14;
+		float billsTimeMin = 2.15F * 60;
+		float jillsTimeMin = 1.90F * 60;
+		float billsSFRateMin = totalSF / billsTimeMin;
+		float jillsSFRateMin = totalSF / jillsTimeMin;
+		//System.out.println(billsSFRateMin);
+		//System.out.println(jillsSFRateMin);
+		
+		// 5 12x14 rooms...
+		int fiveRoomsSF = 5 * totalSF;
+		float combinedSFRateMin = billsSFRateMin + jillsSFRateMin;
+		float timeToCompleteMin = fiveRoomsSF / combinedSFRateMin;
+		System.out.println(" ");
+		System.out.println("Challenge #1 / Time to paint 5 12x14 rooms: " + timeToCompleteMin + " minutes.");
+		
+		
+		// Days to paint 623 12x14 rooms...
+		int lotsRoomsSF = 623 * totalSF;
+		int minPerWorkDay = 8 * 60;
+		timeToCompleteMin = lotsRoomsSF / combinedSFRateMin;
+		float timeToCompleteDays = timeToCompleteMin / minPerWorkDay;
+		System.out.println("Challenge #1 / Time to paint 623 12x14 rooms: " + timeToCompleteDays + " days.");
+		
+		
+		
         /*
         Create and assign variables to hold your first name, last name, and middle initial. Using concatenation,
         build an additional variable to hold your full name in the order of last name, first name, middle initial. The
@@ -541,13 +566,24 @@ public class Exercises {
         Example: "Hopper, Grace B."
         */
 
+		String firstName = "David";
+		String lastName = "Kruse";
+		String middleInitial = "E";
+		System.out.println(" ");
+		System.out.println("Challenge #2:  " + lastName + ", " + firstName + " " + middleInitial +".");
+	
+		
         /*
         The distance between New York and Chicago is 800 miles, and the train has already travelled 537 miles.
         What percentage of the trip has been completed?
         Hint: The percent completed is the miles already travelled divided by the total miles.
         Challenge: Display as an integer value between 0 and 100 using casts.
         */
-
+		float totalMiles = 800;
+		float milesTraveled = 537;
+		float pctCompleted = (milesTraveled / totalMiles) * 100;
+		System.out.println(" ");
+		System.out.println("Challenge #3:  " + (int)pctCompleted + "%");
 
 	}
 
