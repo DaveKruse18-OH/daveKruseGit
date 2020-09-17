@@ -181,7 +181,34 @@ public class Exercises {
 	 sum13([1, 2, 2, 1, 13, 3, 4]) → 10
 	 */
 	public int sum13(int[] nums) {
-		return 0;
+		int ret = 0;
+		int x = 0;
+		boolean toSkip = false;
+		boolean toSkipNext = false;
+		while (x < nums.length) {
+			if (nums[x] == 13) {
+				toSkip = true;
+				toSkipNext = true;
+			}
+			if (toSkip) {
+				x++;
+				toSkip = false;
+			}
+			if (toSkipNext) {
+				x++;
+				toSkipNext = false;
+			}
+			if (x < nums.length) {
+				if (nums[x] == 13) {
+					toSkip = true;
+					toSkipNext = true;
+				} else {
+					ret += nums[x];
+					x++;
+				}
+			}
+		}
+		return ret;
 	}
 
 	/*
@@ -191,7 +218,17 @@ public class Exercises {
 	 has22([2, 1, 2]) → false
 	 */
 	public boolean has22(int[] nums) {
-		return false;
+		boolean ret = false;
+		for (int x = 0; x < nums.length; x++) {
+			if (nums[x] == 2) {
+				if (x < nums.length - 1) {
+					if (nums[x+1] == 2) {
+						ret = true;
+					}
+				}
+			}
+		}
+		return ret;
 	}
 	
 	/*
@@ -201,7 +238,14 @@ public class Exercises {
 	 lucky13([1, 2, 4]) → false
 	 */
 	public boolean lucky13(int[] nums) {
-		return false;
+		boolean ret = true;
+		for (int x = 0; x < nums.length; x++) {
+			if ((nums[x] == 1) || (nums[x] == 3)) {
+				ret = false;
+				break;
+			}
+		}
+		return ret;
 	}
 
 	/*
@@ -211,7 +255,19 @@ public class Exercises {
 	 sum28([1, 2, 3, 4]) → false
 	 */
 	public boolean sum28(int[] nums) {
-		return false;
+		boolean ret = false;
+		int sum = 0;
+		for (int x = 0; x < nums.length; x++) {
+			if (nums[x] == 2) {
+				sum += nums[x];
+			}
+		}
+		
+		if (sum == 8) {
+			ret = true;
+		}
+		
+		return ret;
 	}
 
 }
