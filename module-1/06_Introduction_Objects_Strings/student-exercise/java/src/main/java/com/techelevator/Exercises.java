@@ -216,9 +216,11 @@ public class Exercises {
 	 */
 	public boolean endsLy(String str) {
 		boolean ret = false;
-		String lastTwo = str.substring(str.length() - 2);
-		if (lastTwo.equals("ly")) {
-			ret = true;
+		if (str.length() >= 2) {
+			String lastTwo = str.substring(str.length() - 2);
+			if (lastTwo.equals("ly")) {
+				ret = true;
+			}
 		}
 		return ret;
 	}
@@ -246,7 +248,7 @@ public class Exercises {
 	 */
 	public String twoChar(String str, int index) {
 		String ret = null;
-		if (str.length() >= (index + 1)) {
+		if (str.length() >= (index + 2) && (index > 0)) {
 			ret = str.substring(index, index + 2);
 		} else {
 			ret = str.substring(0, 2);
@@ -276,8 +278,14 @@ public class Exercises {
 	 */
 	public boolean hasBad(String str) {
 		boolean ret = false;
-		if (str.substring(0, 3).equals("bad") || str.substring(1, 4).contentEquals("bad")) {
-			ret = true;
+		if (str.length() >= 4) {
+			if (str.substring(0, 3).equals("bad") || str.substring(1, 4).contentEquals("bad")) {
+				ret = true;
+			}
+		} else if (str.length() == 3) {
+			if (str.substring(0, 3).equals("bad")) {
+				ret = true;
+			}
 		}
 		return ret;
 	}
@@ -305,7 +313,12 @@ public class Exercises {
 	 */
 	public String frontTimes(String str, int n) {
 		String ret = "";
-		String sub = str.substring(0, 3);
+		String sub = "";
+		if (str.length() >= 3) {
+			sub = str.substring(0, 3);
+		} else {
+			sub = str.substring(0);
+		}
 		for (int x = 0; x < n; x++) {
 			ret = ret + sub;
 		}
@@ -320,9 +333,9 @@ public class Exercises {
 	 */
 	public int countXX(String str) {
 		int ret = 0;
-		for (int x = 0; x < str.length(); x++) {
+		for (int x = 0; x < (str.length() - 1); x++) {
 			if (str.substring(x, x + 2).contentEquals("xx")) {
-				
+				ret++;
 			}
 		}
 		return ret;
@@ -337,7 +350,7 @@ public class Exercises {
 	public boolean doubleX(String str) {
 		boolean ret = false;
 		boolean onFirst = true;
-		 for (int x = 0; x < str.length(); x++) {
+		 for (int x = 0; x < (str.length() - 1); x++) {
 			 if ((onFirst) && (str.substring(x, x+1).equals("x"))) {
 				 if (str.substring(x+1, x+2).equals("x")) {
 					 ret = true;
@@ -389,7 +402,17 @@ public class Exercises {
 	 last2("axxxaaxx") → 2
 	 */
 	public int last2(String str) {
-		return 0;
+		int ret = 0;
+		if (str.length() >= 2) {
+			String toMatch = str.substring(str.length() - 2, str.length());
+			for (int x = 0; x < str.length() - 2; x++) {
+				String tempStr = str.substring(x, x + 2);
+				if (tempStr.equals(toMatch)) {
+					ret++;
+				}
+			}
+		}
+		return ret;
 	}
 
 	/*
