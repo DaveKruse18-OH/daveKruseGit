@@ -319,7 +319,13 @@ public class Exercises {
 	 countXX("xxxx") →
 	 */
 	public int countXX(String str) {
-		return 0;
+		int ret = 0;
+		for (int x = 0; x < str.length(); x++) {
+			if (str.substring(x, x + 2).contentEquals("xx")) {
+				
+			}
+		}
+		return ret;
 	}
 
 	/*
@@ -329,7 +335,18 @@ public class Exercises {
 	 doubleX("xxxxx") → true
 	 */
 	public boolean doubleX(String str) {
-		return false;
+		boolean ret = false;
+		boolean onFirst = true;
+		 for (int x = 0; x < str.length(); x++) {
+			 if ((onFirst) && (str.substring(x, x+1).equals("x"))) {
+				 if (str.substring(x+1, x+2).equals("x")) {
+					 ret = true;
+				 }
+				 onFirst = false;
+			 }
+		 }
+		
+		return (ret);
 	}
 
 	/*
@@ -339,7 +356,13 @@ public class Exercises {
 	 stringBits("Heeololeo") → "Hello"
 	 */
 	public String stringBits(String str) {
-		return null;
+		String ret = "";
+		for (int x = 0; x < str.length(); x++) {
+			if (x % 2 == 0) {
+				ret = ret + str.substring(x, x + 1);
+			}
+		}
+		return ret;
 	}
 
 	/*
@@ -349,7 +372,13 @@ public class Exercises {
 	 stringSplosion("ab") → "aab"
 	 */
 	public String stringSplosion(String str) {
-		return null;
+		String ret = "";
+		String newStr = "";
+		for (int x = 0; x < str.length(); x++) {
+			newStr = str.substring(0, x + 1);
+			ret = ret + newStr;
+		}
+		return ret;
 	}
 
 	/*
