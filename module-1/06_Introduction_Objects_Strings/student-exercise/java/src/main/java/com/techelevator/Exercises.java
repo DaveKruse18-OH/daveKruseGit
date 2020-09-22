@@ -423,7 +423,40 @@ public class Exercises {
 	 stringX("xabxxxcdx") → "xabcdx"
 	 */
 	public String stringX(String str) {
-		return null;
+		String ret = "";
+		//System.out.println("str: " + str);		
+
+		if (str.length() <= 1) {
+			ret = str;
+		} else {
+			for (int x = 0; x < str.length(); x++) {
+				String temp = str.substring(x, x + 1);
+				//System.out.println("x: " + x);
+				//System.out.println("temp: " + temp);
+				if (!temp.contentEquals("x")) {
+					// Add temp char to the final result.
+					ret = ret + temp;
+					//System.out.println("ret: " + ret);
+				}
+			}
+	
+			// Now deal with the first and last characters.
+			if (str.charAt(0) == 'x') {
+				ret = "x" + ret;
+			}
+			
+			//System.out.println("str: " + str);
+			//System.out.println("ret: " + ret);
+			
+			if (str.charAt(str.length() - 1) == 'x') {
+				ret = ret + "x";
+			}
+			
+			//System.out.println("str: " + str);
+			//System.out.println("ret: " + ret);
+		}
+		
+		return ret;
 	}
 
 	/*
@@ -433,7 +466,43 @@ public class Exercises {
 	 altPairs("CodingHorror") → "Congrr"
 	 */
 	public String altPairs(String str) {
-		return null;
+		String ret = "";
+		
+		System.out.println("str: " + str);
+		if (str.length() >= 1) {
+			char tempChar0 = str.charAt(0);
+			ret = String.valueOf(tempChar0);
+		}
+		if (str.length() >= 2) {
+			char tempChar1 = str.charAt(1);
+			ret = ret + String.valueOf(tempChar1);
+		}
+		if (str.length() >= 5) {
+			char tempChar4 = str.charAt(4);
+			ret = ret + String.valueOf(tempChar4);
+		}
+		if (str.length() >= 6) {
+			char tempChar5 = str.charAt(5);
+			ret = ret + String.valueOf(tempChar5);
+		}
+		if (str.length() >= 9) {
+			char tempChar8 = str.charAt(8);
+			ret = ret + String.valueOf(tempChar8);
+		}
+		if (str.length() >= 10) {
+			char tempChar9 = str.charAt(9);
+			ret = ret + String.valueOf(tempChar9);
+		}
+		if (str.length() >= 13) {
+			char tempChar12 = str.charAt(12);
+			ret = ret + String.valueOf(tempChar12);
+		}
+		if (str.length() >= 14) {
+			char tempChar13 = str.charAt(13);
+			ret = ret + String.valueOf(tempChar13);
+		}
+		System.out.println("ret: " + ret);
+		return ret;
 	}
 
 	/*
@@ -444,7 +513,11 @@ public class Exercises {
 	 stringYak("yak123ya") → "123ya"
 	 */
 	public String stringYak(String str) {
-		return null;
+		String ret = "";
+		if (str.contains("yak")) {
+			ret = str.replace("yak", "");
+		}
+		return ret;
 	}
 
 }
