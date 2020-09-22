@@ -468,7 +468,7 @@ public class Exercises {
 	public String altPairs(String str) {
 		String ret = "";
 		
-		System.out.println("str: " + str);
+		//System.out.println("str: " + str);
 		if (str.length() >= 1) {
 			char tempChar0 = str.charAt(0);
 			ret = String.valueOf(tempChar0);
@@ -501,7 +501,7 @@ public class Exercises {
 			char tempChar13 = str.charAt(13);
 			ret = ret + String.valueOf(tempChar13);
 		}
-		System.out.println("ret: " + ret);
+		//System.out.println("ret: " + ret);
 		return ret;
 	}
 
