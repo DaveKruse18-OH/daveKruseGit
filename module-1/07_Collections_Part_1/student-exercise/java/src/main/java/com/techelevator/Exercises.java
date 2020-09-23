@@ -215,7 +215,35 @@ public class Exercises {
 	 interleaveLists( [1, 2, 3], [4, 5, 6] )  ->  [1, 4, 2, 5, 3, 6]
 	 */
 	public List<Integer> interleaveLists(List<Integer> listOne, List<Integer> listTwo) {
-		return null;
+		List<Integer> ret = new ArrayList<Integer>();
+		int sizeOfOne = listOne.size();
+		int sizeOfTwo = listTwo.size();
+		boolean oneDone = false;
+		boolean twoDone = false;
+		int totalElements = 0;
+		if (sizeOfOne >= sizeOfTwo) {
+			totalElements = sizeOfOne;
+		} else {
+			totalElements = sizeOfTwo;
+		}
+		
+		for (int x = 0; x < totalElements; x++) {
+			if (x >= sizeOfOne) {
+				oneDone = true;
+			}
+			if (x >= sizeOfTwo) {
+				twoDone = true;
+			}
+			
+			if (!oneDone) {
+				ret.add(listOne.get(x));
+			}
+			if (!twoDone) {
+				ret.add(listTwo.get(x));
+			}
+		}
+		
+		return ret;
 	}
 
 	/*
