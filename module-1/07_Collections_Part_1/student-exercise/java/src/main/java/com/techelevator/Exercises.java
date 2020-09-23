@@ -256,7 +256,26 @@ public class Exercises {
 	 boardingGate( [0, -1, 44, 31, 17, 7, 27, 16, 26, 6] ) -> [7, 6, 17, 16, 27, 26]
 	 */
 	public List<Integer> boardingGate(List<Integer> seatNumberList) {
-		return null;
+		List<Integer> ret = new ArrayList<Integer>();
+		boolean done = false;
+		int increment = 10;
+		int low = 1;
+		int high = 10;
+		while (!done) {
+			for (int x = 0; x < seatNumberList.size(); x++) {
+				int temp = seatNumberList.get(x);
+				if ((temp >= low) && (temp <= high)) {
+					ret.add(temp);
+				}
+			}
+			low = low + increment;
+			high = high + increment;
+			if ((low >= 31) && (high <= 40)) {
+				done = true;
+			}
+		}
+			
+		return ret;
 	}
 
 }
