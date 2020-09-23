@@ -79,7 +79,7 @@ public class Exercises {
 		myStack.addAll(stringList);
 		for (int x = 0; x < stringList.size(); x++) {
 			String temp = myStack.pop();
-			System.out.println("temp: " + temp);
+			//System.out.println("temp: " + temp);
 			ret.add(temp);
 		}
 		return ret;
@@ -110,7 +110,14 @@ public class Exercises {
 	 findLargest( [34070, 1380, 81238, 7782, 234, 64362, 627] ) -> 64362
 	 */
 	public Integer findLargest(List<Integer> integerList) {
-		return null;
+		int ret = 0;
+		for (int x = 0; x < integerList.size(); x++) {
+			int temp = integerList.get(x);
+			if (temp > ret) {
+				ret = temp;
+			}
+		}
+		return ret;
 	}
 
 	/*
@@ -120,7 +127,15 @@ public class Exercises {
 	 oddOnly( {734, 233, 782, 811, 3, 9999} ) -> [233, 811, 3, 9999]
 	 */
 	public List<Integer> oddOnly(Integer[] integerArray) {
-		return null;
+		List<Integer> ret = new ArrayList<Integer>();
+		for (int x = 0; x < integerArray.length; x++) {
+			Integer temp = integerArray[x];
+			int rem = temp % 2;
+			if (rem != 0) {
+				ret.add(temp);
+			}
+		}
+		return ret;
 	}
 
 	/*
@@ -131,7 +146,18 @@ public class Exercises {
 	 foundIntTwice( [9, 23, 44, 2, 88, 44], 44) -> true
 	 */
 	public boolean foundIntTwice(List<Integer> integerList, int intToFind) {
-		return false;
+		boolean ret = false;
+		int cnt = 0;
+		for (int x = 0; x < integerList.size(); x++) {
+			int temp = integerList.get(x);
+			if (temp == intToFind) {
+				cnt++;
+			}
+		}
+		if (cnt >= 2) {
+			ret = true;
+		}
+		return ret;
 	}
 
 	/*
@@ -148,7 +174,37 @@ public class Exercises {
 	 equals "1")
 	 */
 	public List<String> fizzBuzzList(Integer[] integerArray) {
-		return null;
+		List<String> ret = new ArrayList<String>();
+
+		for (int x = 0; x < integerArray.length; x++) {
+			int divOf3 = 0;
+			boolean three = false;
+			int divOf5 = 0;
+			boolean five = false;
+			
+			int temp = integerArray[x];
+			divOf3 = temp % 3;
+			divOf5 = temp % 5;
+			if (divOf3 == 0) {
+				three = true;
+			}
+			if (divOf5 == 0) {
+				five = true;
+			}
+			
+			String tempChar = Integer.toString(temp);
+			if ((three == true) && (five == false)) {
+				ret.add("Fizz");
+			} else if ((three == false) && (five == true)) {
+				ret.add("Buzz");
+			} else if ((three == true) && (five == true)) {
+				ret.add("FizzBuzz");
+			} else {
+				ret.add(tempChar);
+			}
+		}
+		
+		return ret;
 	}
 
 	/*
