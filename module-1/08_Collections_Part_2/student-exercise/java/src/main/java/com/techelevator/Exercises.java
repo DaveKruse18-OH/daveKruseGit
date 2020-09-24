@@ -118,7 +118,20 @@ public class Exercises {
 	 *
 	 */
 	public Map<String, Integer> robPeterToPayPaul(Map<String, Integer> peterPaul) {
-		return null;
+		//Map<String, Integer> ret = new HashMap<String, Integer>();
+		Integer peterMoney = peterPaul.get("Peter");
+		Integer paulMoney = peterPaul.get("Paul");
+		if ((peterMoney > 0) && (paulMoney < 1000)) {
+			Integer half = peterMoney / Integer.valueOf(2);
+			if ((peterMoney % Integer.valueOf(2)) != 0) {
+				half++;
+				paulMoney--;
+			}
+			peterPaul.put("Peter", half);
+			peterPaul.put("Paul", paulMoney + half);
+		}
+		
+		return peterPaul;
 	}
 
     /*
@@ -133,7 +146,20 @@ public class Exercises {
 	 *
 	 */
 	public Map<String, Integer> peterPaulPartnership(Map<String, Integer> peterPaul) {
-		return null;
+		//Map<String, Integer> ret = new HashMap<String, Integer>();
+		Integer peterMoney = peterPaul.get("Peter");
+		Integer paulMoney = peterPaul.get("Paul");
+		if ((peterMoney >= 5000) && (paulMoney >= 10000)) {
+			Double peterQtr = peterMoney * 0.25;
+			int intPeterQtr = (int)Math.round(peterQtr);
+			Double paulQtr = paulMoney * 0.25;
+			int intPaulQtr = (int)Math.round(paulQtr);
+			peterPaul.put("Peter", peterMoney - intPeterQtr);
+			peterPaul.put("Paul", paulMoney - intPaulQtr);
+			peterPaul.put("PeterPaulPartnership", intPeterQtr + intPaulQtr);
+		}
+		
+		return peterPaul;
 	}
 
 	/*
@@ -145,7 +171,19 @@ public class Exercises {
 	 * beginningAndEnding(["muddy", "good", "moat", "good", "night"]) → {"g": "d", "m": "t", "n": "t"}
 	 */
 	public Map<String, String> beginningAndEnding(String[] words) {
-		return null;
+		Map<String, String> ret = new HashMap<String, String>();
+		
+		for (int x = 0; x < words.length; x++) {
+			String value = words[x];
+			int len = value.length();
+			char firstChar = value.charAt(0);
+			String first = String.valueOf(firstChar);
+			char lastChar = value.charAt(len - 1);
+			String last = String.valueOf(lastChar);
+			ret.put(first, last);
+		}
+		
+		return ret;
 	}
 
 	/*
