@@ -1,5 +1,6 @@
 package com.techelevator;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -358,7 +359,30 @@ public class Exercises {
 	 *
 	 */
 	public Map<String, Integer> last2Revisited(String[] words) {
-		return null;
+		Map<String, Integer> ret = new HashMap<String, Integer>();
+		
+		for (int x = 0; x < words.length; x++) {
+			String stringToExplore = words[x];
+			String stringToMatch = stringToExplore.substring(stringToExplore.length() - 2);
+			//System.out.println("stringToExplore: " + stringToExplore);
+			//System.out.println("stringToMatch: " + stringToMatch);
+			
+			int cnt = 0;
+			for (int y = 0; y < stringToExplore.length() - 2; y++) {
+				String possibleString = stringToExplore.substring(y, y+2);
+				//System.out.println("possibleString: " + possibleString);
+				if (stringToMatch.equals(possibleString)) {
+					cnt++;
+				}
+			}
+			//System.out.println("---------------------------------");
+			//System.out.println("stringToMatch: " + stringToMatch);
+			//System.out.println("cnt: " + cnt);
+			//System.out.println("----------------------------------");
+			ret.put(stringToExplore, cnt);
+		}
+		
+		return ret;
 	}
 
 	/*
@@ -368,7 +392,16 @@ public class Exercises {
 	 distinctValues( ["jingle", "bells", "jingle", "bells", "jingle", "all", "the", "way"] ) -> ["jingle", "bells", "all", "the", "way"]
 	 */
 	public List<String> distinctValues(List<String> stringList) {
-		return null;
+		List<String> ret = new ArrayList<String>();
+		int sizeOfList = stringList.size();
+		for (int x = 0; x < sizeOfList; x++) {
+			String temp = stringList.get(x);
+			if (!ret.contains(temp)) {
+				ret.add(temp);
+			}
+		}
+		
+		return ret;
 	}
 
 }
