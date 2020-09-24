@@ -368,7 +368,6 @@ public class ExercisesTest {
 				output, hasEntry("SKU_50", 444));
 		assertThat("consolidateInventory({\"SKU_4\": 0, \"SKU_23\": 53, \"SKU_39\": 66, \"SKU_X\": 8} {\"SKU_4\":68, \"SKU_23\": 33, \"SKU_50\": 444, \"SKU_X\": 1})",
 				output, hasEntry("SKU_X", 9));
-
 		
 		inventory1 = new HashMap<>();
 		inventory1.put("Lorem", 11);

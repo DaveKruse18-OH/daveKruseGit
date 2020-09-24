@@ -1,8 +1,11 @@
 package com.techelevator;
 
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class Exercises {
 
@@ -258,7 +261,27 @@ public class Exercises {
 	 *
 	 */
 	public Map<String, Boolean> wordMultiple(String[] words) {
-		return null;
+		Map<String, Boolean> ret = new HashMap<String, Boolean>();
+		
+		for (int x = 0; x < words.length; x++) {
+			String keyValue = words[x];
+			if (!ret.containsKey(keyValue)) {
+				int cnt = 0;
+				for (int y = 0; y < words.length; y++) {
+					String tempValue = words[y];
+					if (tempValue.equals(keyValue)) {
+						cnt++;
+					}
+				}
+				boolean value = false;
+				if (cnt >= 2) {
+					value = true;
+				}
+				ret.put(keyValue, value);
+			}	
+		}
+		
+		return ret;
 	}
 
 	/*
@@ -272,7 +295,51 @@ public class Exercises {
 	 *
 	 */
 	public Map<String, Integer> consolidateInventory(Map<String, Integer> mainWarehouse, Map<String, Integer> remoteWarehouse) {
-		return null;
+		Map<String, Integer> ret = new HashMap<String, Integer>();
+		
+		if (mainWarehouse.isEmpty()) {
+			ret = remoteWarehouse;
+		}
+		else if (remoteWarehouse.isEmpty()) {
+			ret = mainWarehouse;
+		} else {
+			Set<String> mainSet = new HashSet<String>();
+			Set<String> remoteSet = new HashSet<String>();
+			mainSet = mainWarehouse.keySet();
+			remoteSet = remoteWarehouse.keySet();
+			
+			Iterator<String> itrMain = mainSet.iterator();
+			Iterator<String> itrRemote = remoteSet.iterator();
+				
+			while (itrMain.hasNext()) {
+				String mainKey = itrMain.next();
+				if (remoteSet.contains(mainKey)) {
+					Integer remoteValue = remoteWarehouse.get(mainKey);
+					Integer mainValue = mainWarehouse.get(mainKey);
+					Integer newValue = mainValue + remoteValue;
+					ret.put(mainKey, newValue);
+					//mainSet.remove(mainKey);
+					remoteSet.remove(mainKey);
+				} else {
+					Integer mainValue = mainWarehouse.get(mainKey);
+					ret.put(mainKey, mainValue);
+					//mainSet.remove(mainKey);
+				}
+			}
+			
+			remoteSet = new HashSet<String>();
+			remoteSet = remoteWarehouse.keySet();
+			itrRemote = remoteSet.iterator();
+			
+			while (itrRemote.hasNext()) {
+				String remoteKey = itrRemote.next();
+				Integer remoteValue = remoteWarehouse.get(remoteKey);
+				ret.put(remoteKey, remoteValue);
+				remoteSet.remove(remoteKey);
+			}
+	
+		}
+		return ret;
 	}
 
 	/*
