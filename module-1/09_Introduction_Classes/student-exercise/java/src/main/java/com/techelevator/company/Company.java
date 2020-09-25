@@ -14,6 +14,7 @@ public class Company {
 	public String getName() {
 		return name;
 	}
+	
 	public String getCompanySize() {
 		String ret = null;
 		if (numberOfEmployees <= 50) {
@@ -25,28 +26,37 @@ public class Company {
 		}
 		return ret;
 	}
+	
 	public double getProfit() {
 		return revenue - expenses;
 	}
+	
 	public void setName(String name) {
 		this.name = name;
 	}
+	
 	public int getNumberOfEmployees() {
 		return numberOfEmployees;
 	}
+	
 	public void setNumberOfEmployees(int numberOfEmployees) {
 		this.numberOfEmployees = numberOfEmployees;
 	}
+	
 	public double getRevenue() {
 		return revenue;
 	}
+	
 	public void setRevenue(double revenue) {
 		this.revenue = revenue;
 	}
+	
 	public double getExpenses() {
 		return expenses;
 	}
+	
 	public void setExpenses(double expenses) {
 		this.expenses = expenses;
 	}
+	
 }
