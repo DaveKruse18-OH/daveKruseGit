@@ -1,0 +1,30 @@
+package com.techelevator;
+
+public class CheckingAccount extends BankAccount {
+	public CheckingAccount(String accountHolderName, String accountNumber) {
+		super(accountHolderName, accountNumber);
+	}
+	
+	public CheckingAccount(String accountHolderName, String accountNumber, int balance) {
+		super(accountHolderName, accountNumber, balance);
+	}
+	
+	@Override
+	public int withdraw(int amountToWithdraw) {
+		int ret = 0;
+		
+		int newBalance = super.getBalance() - amountToWithdraw;
+		if (newBalance <= -100) {
+			// Transaction failed.  No change to balance.
+		} else if ((newBalance >= -89) && (newBalance < 0)) {
+			// Transaction ok, but $10 overdraft charge will be assessed.
+			super.withdraw(amountToWithdraw + 10);
+		} else {
+			// Simply process the transaction.
+			super.withdraw(amountToWithdraw);
+		}
+		
+		return super.getBalance();
+	}
+	
+}
