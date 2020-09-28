@@ -15,9 +15,9 @@ public class CheckingAccount extends BankAccount {
 		
 		int newBalance = super.getBalance() - amountToWithdraw;
 		if (newBalance <= -100) {
-			// Transaction failed.  No change to balance.
+			// Transaction failed.  No change to balance.  Do nothing.
 		} else if ((newBalance >= -89) && (newBalance < 0)) {
-			// Transaction ok, but $10 overdraft charge will be assessed.
+			// Transaction ok to process, but $10 overdraft charge will be assessed.
 			super.withdraw(amountToWithdraw + 10);
 		} else {
 			// Simply process the transaction.
