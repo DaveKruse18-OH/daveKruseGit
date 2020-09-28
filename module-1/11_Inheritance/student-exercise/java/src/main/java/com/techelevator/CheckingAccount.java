@@ -11,8 +11,6 @@ public class CheckingAccount extends BankAccount {
 	
 	@Override
 	public int withdraw(int amountToWithdraw) {
-		int ret = 0;
-		
 		int newBalance = super.getBalance() - amountToWithdraw;
 		if (newBalance <= -100) {
 			// Transaction failed.  No change to balance.  Do nothing.
