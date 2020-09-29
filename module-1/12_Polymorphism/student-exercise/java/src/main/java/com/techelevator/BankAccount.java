@@ -1,6 +1,6 @@
 package com.techelevator;
 
-public class BankAccount {
+public class BankAccount implements Accountable {
 
     private String accountHolderName;
     private String accountNumber;
@@ -18,6 +18,12 @@ public class BankAccount {
         this.balance = balance;
     }
 
+    public int transferTo(BankAccount destinationAccount, int transferAmount) {
+    	this.withdraw(transferAmount);
+    	destinationAccount.balance += transferAmount;
+    	return this.balance;
+    }
+    
     public String getAccountHolderName() {
         return accountHolderName;
     }
