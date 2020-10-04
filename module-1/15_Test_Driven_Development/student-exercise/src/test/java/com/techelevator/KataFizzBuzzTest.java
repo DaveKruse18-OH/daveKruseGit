@@ -14,7 +14,9 @@ public class KataFizzBuzzTest {
 	
 	@Test
 	public void testDivBy3() {
-		String ret1 = fB.fizzBuss(3);
+		String ret1 = fB.fizzBuss(1);
+		
+		Assert.assertEquals("1", ret1);
 	}
 
 }
