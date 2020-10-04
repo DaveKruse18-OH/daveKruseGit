@@ -22,7 +22,7 @@ public class KataFizzBuzzTest {
 		Assert.assertEquals("1", ret1);
 		Assert.assertEquals("Fizz", ret2);
 		Assert.assertEquals("Buzz", ret3);
-		Assert.assertEquals("Buzz", ret4);
+		Assert.assertEquals("FizzBuzz", ret4);
 	}
 	
 	@Test
@@ -34,7 +34,7 @@ public class KataFizzBuzzTest {
 		
 		Assert.assertEquals("Fizz", ret1);
 		Assert.assertEquals("Fizz", ret2);
-		Assert.assertEquals("Buzz", ret3);
+		Assert.assertEquals("FizzBuzz", ret3);
 		Assert.assertEquals("Fizz", ret4);
 	}
 	
@@ -47,7 +47,7 @@ public class KataFizzBuzzTest {
 		
 		Assert.assertEquals("Buzz", ret1);
 		Assert.assertEquals("Buzz", ret2);
-		Assert.assertEquals("Buzz", ret3);
+		Assert.assertEquals("FizzBuzz", ret3);
 		Assert.assertEquals("Buzz", ret4);
 	}
 	
@@ -59,10 +59,10 @@ public class KataFizzBuzzTest {
 		String ret4 = fB.fizzBuss(15);
 		String ret5 = fB.fizzBuss(30);
 		
-		Assert.assertEquals("Buzz", ret1);
-		Assert.assertEquals("Buzz", ret2);
+		Assert.assertEquals("1", ret1);
+		Assert.assertEquals("Fizz", ret2);
 		Assert.assertEquals("Buzz", ret3);
-		Assert.assertEquals("Buzz", ret4);
-		Assert.assertEquals("Fizz", ret5);
+		Assert.assertEquals("FizzBuzz", ret4);
+		Assert.assertEquals("FizzBuzz", ret5);
 	}
 }
