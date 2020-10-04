@@ -20,9 +20,9 @@ public class KataFizzBuzzTest {
 		String ret4 = fB.fizzBuss(15);
 		
 		Assert.assertEquals("1", ret1);
-		Assert.assertEquals("3", ret2);
+		Assert.assertEquals("Fizz", ret2);
 		Assert.assertEquals("5", ret3);
-		Assert.assertEquals("15", ret4);
+		Assert.assertEquals("Fizz", ret4);
 	}
 	
 	@Test
