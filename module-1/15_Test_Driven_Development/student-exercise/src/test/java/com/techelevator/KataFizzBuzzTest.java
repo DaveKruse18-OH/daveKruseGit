@@ -48,7 +48,7 @@ public class KataFizzBuzzTest {
 		Assert.assertEquals("Buzz", ret1);
 		Assert.assertEquals("Buzz", ret2);
 		Assert.assertEquals("FizzBuzz", ret3);
-		Assert.assertEquals("Buzz", ret4);
+		Assert.assertEquals("", ret4);
 	}
 	
 	@Test
