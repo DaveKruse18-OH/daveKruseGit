@@ -13,10 +13,28 @@ public class KataFizzBuzzTest {
 	}
 	
 	@Test
-	public void testDivBy3() {
+	public void testRetNum() {
 		String ret1 = fB.fizzBuss(1);
+		String ret2 = fB.fizzBuss(3);
+		String ret3 = fB.fizzBuss(5);
+		String ret4 = fB.fizzBuss(15);
 		
 		Assert.assertEquals("1", ret1);
+		Assert.assertEquals("3", ret2);
+		Assert.assertEquals("5", ret3);
+		Assert.assertEquals("15", ret4);
 	}
-
+	
+	@Test
+	public void testRetFizz() {
+		String ret1 = fB.fizzBuss(3);
+		String ret2 = fB.fizzBuss(12);
+		String ret3 = fB.fizzBuss(15);
+		String ret4 = fB.fizzBuss(21);
+		
+		Assert.assertEquals("Fizz", ret1);
+		Assert.assertEquals("Fizz", ret2);
+		Assert.assertEquals("Fizz", ret3);
+		Assert.assertEquals("Fizz", ret4);
+	}	
 }
