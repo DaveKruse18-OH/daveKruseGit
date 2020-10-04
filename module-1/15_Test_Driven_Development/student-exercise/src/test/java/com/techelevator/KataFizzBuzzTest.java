@@ -82,4 +82,21 @@ public class KataFizzBuzzTest {
 		Assert.assertEquals("FizzBuzz", ret5);
 		Assert.assertEquals("FizzBuzz", ret6);
 	}
+
+	@Test
+	public void testOutsideOfRange() {
+		String ret1 = fB.fizzBuss(0);
+		String ret2 = fB.fizzBuss(-6);
+		String ret3 = fB.fizzBuss(-1);
+		String ret4 = fB.fizzBuss(101);
+		String ret5 = fB.fizzBuss(300);
+		String ret6 = fB.fizzBuss(150);
+		
+		Assert.assertEquals("", ret1);
+		Assert.assertEquals("", ret2);
+		Assert.assertEquals("", ret3);
+		Assert.assertEquals("", ret4);
+		Assert.assertEquals("", ret5);
+		Assert.assertEquals("", ret6);
+	}
 }
