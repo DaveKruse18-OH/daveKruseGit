@@ -1,9 +1,7 @@
 package com.techelevator;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
@@ -47,6 +45,9 @@ public class WordCount {
 		}
 		System.out.println("What is the search word you are looking for?");
 		searchWord = myInputScanner.nextLine();
+		
+		System.out.println("Should the search be case sensitive? (Y\\N)");
+		caseSensitive = myInputScanner.nextLine().toUpperCase();
 	}
 	
 	private void performSearch() {
@@ -77,39 +78,21 @@ public class WordCount {
 		
 		String[] words = lineToSearch.split(" ");
 		for (String w : words) {
-			if (w.equals(searchWord)) {
-				ret = true;
+			if (caseSensitive.equals("Y")) {
+				if (w.equals(searchWord)) {
+					ret = true;
+				}
+			} else {
+				if (w.equalsIgnoreCase(searchWord)) {
+					ret = true;
+				}
 			}
 		}
 		return ret;
 	}
 	
 	public void closeFile() {
-		
+		myFileScanner.close();
 	}
-	
-	//public String getFileName() {
-	//	return fileName;
-	//}
-
-	//public void setFileName(String fileName) {
-	//	this.fileName = fileName;
-	//}
-
-	//public String getSearchWord() {
-	//	return searchWord;
-	//}
-
-	//public void setSearchWord(String searchWord) {
-	//	this.searchWord = searchWord;
-	//}
-
-	//public String getCaseSensitive() {
-	//	return caseSensitive;
-	//}
-
-	//public void setCaseSensitive(String caseSensitive) {
-	//	this.caseSensitive = caseSensitive;
-	//}
 
 }
