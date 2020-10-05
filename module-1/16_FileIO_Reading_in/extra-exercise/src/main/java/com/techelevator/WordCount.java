@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class WordCount {
@@ -20,7 +21,7 @@ public class WordCount {
 		wordCount.closeFile();
 	}
 	
-	public void getInputs() {
+	private void getInputs() {
 		myInputScanner = new Scanner(System.in);
 		boolean fileOpened = false;
 		while (!fileOpened) {
@@ -48,36 +49,67 @@ public class WordCount {
 		searchWord = myInputScanner.nextLine();
 	}
 	
-	public void performSearch() {
+	private void performSearch() {
+		// Read all lines in the file and process one at a time.
+		try {
+			int lineNum = 1;
+			String line = myFileScanner.nextLine();
+			while (line != null) {
+				boolean wordFound = searchLine(line);
+				if (wordFound) {
+					System.out.println(lineNum + ") " + line);
+				}
+				
+				lineNum++;
+				line = myFileScanner.nextLine();
+			}
+		}
+		catch (NoSuchElementException e) {
+			System.out.println("-- End Of File --");
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private boolean searchLine(String lineToSearch) {
+		boolean ret = false;
 		
+		String[] words = lineToSearch.split(" ");
+		for (String w : words) {
+			if (w.equals(searchWord)) {
+				ret = true;
+			}
+		}
+		return ret;
 	}
 	
 	public void closeFile() {
 		
 	}
 	
-	public String getFileName() {
-		return fileName;
-	}
+	//public String getFileName() {
+	//	return fileName;
+	//}
 
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
-	}
+	//public void setFileName(String fileName) {
+	//	this.fileName = fileName;
+	//}
 
-	public String getSearchWord() {
-		return searchWord;
-	}
+	//public String getSearchWord() {
+	//	return searchWord;
+	//}
 
-	public void setSearchWord(String searchWord) {
-		this.searchWord = searchWord;
-	}
+	//public void setSearchWord(String searchWord) {
+	//	this.searchWord = searchWord;
+	//}
 
-	public String getCaseSensitive() {
-		return caseSensitive;
-	}
+	//public String getCaseSensitive() {
+	//	return caseSensitive;
+	//}
 
-	public void setCaseSensitive(String caseSensitive) {
-		this.caseSensitive = caseSensitive;
-	}
+	//public void setCaseSensitive(String caseSensitive) {
+	//	this.caseSensitive = caseSensitive;
+	//}
 
 }
