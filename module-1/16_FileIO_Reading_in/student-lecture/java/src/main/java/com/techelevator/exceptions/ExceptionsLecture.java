@@ -5,6 +5,9 @@ import java.util.Scanner;
 public class ExceptionsLecture {
 
 	public static void main(String[] args) {
+		
+		ExceptionsLecture lecture = new ExceptionsLecture();
+		
 		Scanner scan = new Scanner(System.in);
 		
 		/* By default, when an Exception is thrown, it will "bubble up" through the call stack until
@@ -13,6 +16,8 @@ public class ExceptionsLecture {
 		 * 
 		 * By using try/catch blocks, you can stop the Exception from exiting the method and provide
 		 * code to handle it. */
+		
+		
 		System.out.println("The following cities: ");
 		String[] cities = new String[] { "Cleveland", "Columbus", "Cincinatti" };
 		try {
@@ -31,7 +36,7 @@ public class ExceptionsLecture {
 		/* try/catch blocks will also catch Exceptions that are thrown from method calls further down the stack */
 		try {
 			System.out.println("Hey ya'll, watch this!");
-			doSomethingDangerous();  // throws an ArrayIndexOutOfBoundsException
+			lecture.doSomethingDangerous();  // throws an ArrayIndexOutOfBoundsException
 			System.out.println("See, I told you nothing would go wrong!");
 		} catch(ArrayIndexOutOfBoundsException e) {  
 			System.out.println("Call the Darwin Awards...");
@@ -57,7 +62,7 @@ public class ExceptionsLecture {
 		int nights = -3;
 		int numberOfGuests = 2;
 		try {
-			double amountOwed = calculateHotelRoomCharges(nights, numberOfGuests);
+			double amountOwed = lecture.calculateHotelRoomCharges(nights, numberOfGuests);
 			System.out.println("Total owed for "+numberOfGuests+" guests for "+nights+" nights is $"+amountOwed);
 		} catch(IllegalArgumentException e) {
 			System.out.println(numberOfGuests+" guests for "+nights+" nights just doesn't make sense.");
@@ -71,7 +76,7 @@ public class ExceptionsLecture {
 		double currentBalance = 250;
 		double amountToWithdraw = 300;
 		try {
-			double newBalance = withdraw(currentBalance, amountToWithdraw);
+			double newBalance = lecture.withdraw(currentBalance, amountToWithdraw);
 			System.out.println("new balance is "+newBalance);
 		} catch(OverdraftException e) {
 			System.out.println("Unfortunately, you can't withdraw more money than you have in the bank...");
@@ -87,7 +92,7 @@ public class ExceptionsLecture {
 		 * The stacktrace contains a record of where the Exception was thrown and all of the 
 		 * method calls that lead up to the Exception being thrown. */
 		try {
-			doSomethingDangerous(); // throws an ArrayIndexOutOfBoundsException
+			lecture.doSomethingDangerous(); // throws an ArrayIndexOutOfBoundsException
 		} catch (ArrayIndexOutOfBoundsException e) {
 			System.out.println("AN EXAMPLE OF A STACKTRACE:");
 			e.printStackTrace(); // will print the Exception stacktrace to the terminal
@@ -98,7 +103,7 @@ public class ExceptionsLecture {
 	/* this method does not need to declare that it throws an IllegalArgumentException because
 	 * it is a subclass of RuntimeException.  These are known as "unchecked exceptions" because
 	 * the compiler does not force us to catch them. */
-	private static double calculateHotelRoomCharges(int nights, int numberOfGuests) {
+	private double calculateHotelRoomCharges(int nights, int numberOfGuests) {
 		final double EXTRA_GUEST_CHARGE = 20;
 		final double ROOM_RATE = 85;
 		
@@ -121,7 +126,7 @@ public class ExceptionsLecture {
 	/* OverdraftException is a "checked exception" (i.e. it is a subclass of java.lang.Exception)
 	 * so we need to either catch it or declare that it is thrown.  This method declares that 
 	 * it can throw an OverdraftException using the "throws" keyword */
-	public static double withdraw(double currentBalance, double amountToWithdraw) throws OverdraftException {
+	public double withdraw(double currentBalance, double amountToWithdraw) throws OverdraftException {
 		double newBalance;
 		if(amountToWithdraw <= currentBalance) {
 			newBalance = currentBalance - amountToWithdraw;
@@ -131,7 +136,7 @@ public class ExceptionsLecture {
 		return newBalance;		
 	}
 
-	private static void doSomethingDangerous() {
+	private void doSomethingDangerous() {
 		int[] numbers = new int[5];
 		for(int i = 0; i < 10; i++) {
 			numbers[i] = i;  // this line will throw an Exception once i reaches 5
