@@ -1,0 +1,5 @@
+R223,12-inch paint roller,15,7.00
+P224,Quart of java green acrylic paint,10,16.00
+P225,Quart of java blue water-based stain,5,9.99
+P225,Quart of dot net stain remover,5,29.99
+B123,4-inch wooden paint brush,25,3.00
