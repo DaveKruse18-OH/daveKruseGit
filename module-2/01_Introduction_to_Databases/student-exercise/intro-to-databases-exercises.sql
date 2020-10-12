@@ -5,14 +5,27 @@
 --   The value immediately after the problem statement is the expected number of rows that should be returned by the query.
 
 -- 1. The name and population of all cities in Ontario, Canada (27 rows)
+select name, population
+from city
+where  countrycode = 'CAN' and district = 'Ontario';
 
 -- 2. The name and population of all cities in Montana (1 row)
+select name, population
+from city
+where countrycode = 'USA' and district = 'Montana';
 
 -- 3. The name, form of government, and head of state of all countries in Europe (46 rows)
+select name, governmentform, headofstate
+from country
+where continent = 'Europe';
 
 -- 4. The name, population, surface area, and average life expectancy of all countries in Asia (51 rows)
+select name, population, surfacearea, lifeexpectancy
+from country
+where continent = 'Asia';
 
 -- 5. The name, country code, and population of all cities with a population greater than 8 million people (10 rows)
+
 
 -- 6. The name, country code, and population of all cities with a population less than one thousand people (11 rows)
 
