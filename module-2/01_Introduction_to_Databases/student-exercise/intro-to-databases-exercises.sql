@@ -105,6 +105,11 @@ from country
 where lifeexpectancy >= 70 and gnp >= 1 and gnp <= 100;
 
 -- 21. The per capita GNP (i.e. GNP divided by population) in US Dollars of all countries in Europe (46 rows)
-select 
+select name, (gnp / population) as PerCapitaGNP
+from country
+where continent = 'Europe';
 
 -- 22. The number of years since independence for all countries that have a year of independence (192 rows)
+select name, (2020 - indepyear) as YearsOfIndep
+from country
+where indepyear is not null;
