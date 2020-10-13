@@ -58,17 +58,28 @@ from city
 where countrycode = 'CHN'
 group by countrycode;
 
--- 7. The maximum population of all countries in the world.
+-- 7. The maximum population of all countries in the world.             KDE - Get name of country.
 -- (largest country population in world: 1277558000)
+select max(population) as population
+from country;
+--group by name;
+--order by population DESC;
 
--- 8. The maximum population of all cities in the world.
+-- 8. The maximum population of all cities in the world.                KDE - Get name of city.
 -- (largest city population in world: 10500000)
+select max(population) population
+from city;
 
--- 9. The maximum population of all cities in Australia.
+-- 9. The maximum population of all cities in Australia.                KDE - Get name of city.
 -- (largest city population in Australia: 3276207)
+select max(population) as population
+from city
+where countrycode = 'AUS';
 
 -- 10. The minimum population of all countries in the world.
 -- (smallest_country_population in world: 50)
+
+
 
 -- 11. The average population of cities in the United States.
 -- (avgerage city population in USA: 286955.3795)
