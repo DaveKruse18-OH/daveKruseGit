@@ -39,7 +39,7 @@ order by gnp_per_capita DESC;
 
 -- 4. The average life expectancy of countries in South America.        KDE - round to 4 decimals.
 -- (average life expectancy in South America: 70.9461)
-select continent, avg(lifeexpectancy) as avg_LE
+select continent, AVG(lifeexpectancy) as avg_LE
 from country
 where continent = 'South America' and lifeexpectancy IS NOT NULL
 GROUP BY continent;
@@ -76,19 +76,32 @@ select max(population) as population
 from city
 where countrycode = 'AUS';
 
--- 10. The minimum population of all countries in the world.
+-- 10. The minimum population of all countries in the world.            KDE - show name of country
 -- (smallest_country_population in world: 50)
-
-
+SELECT MIN(population) AS population
+FROM country
+WHERE population IS NOT NULL AND population != 0;
+--GROUP BY continent, name
+--ORDER BY population ASC;
 
 -- 11. The average population of cities in the United States.
 -- (avgerage city population in USA: 286955.3795)
+select ROUND(AVG(population), 4) as population
+from city
+where countrycode = 'USA';
 
 -- 12. The average population of cities in China.
 -- (average city population in China: 484720.6997 approx.)
+select ROUND(AVG(population), 4) as avg_population
+from city
+where countrycode = 'CHN';
 
 -- 13. The surface area of each continent ordered from highest to lowest.
 -- (largest continental surface area: 31881000, "Asia")
+select continent, SUM(surfacearea) as surfacearea
+from country
+group by continent
+order by surfacearea DESC;
 
 -- 14. The highest population density (population divided by surface area) of all 
 -- countries in the world. 
