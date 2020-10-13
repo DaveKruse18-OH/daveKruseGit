@@ -145,11 +145,18 @@ order by district;
 
 -- 19. The count of countries on each continent, ordered from highest to lowest.
 -- (highest count: 58, "Africa")
-
+select continent, count(*) as country_cnt
+from country
+group by continent
+order by country_cnt DESC;
 
 -- 20. The count of cities in each country ordered from highest to lowest.
 -- (largest number of  cities ib a country: 363, "CHN")
-	
+select countrycode, count(*) as city_cnt
+from city
+group by countrycode
+order by city_cnt DESC;
+
 -- 21. The population of the largest city in each country ordered from highest to 
 -- lowest.
 -- (largest city population in world: 10500000, "IND")
