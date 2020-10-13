@@ -34,6 +34,13 @@
 
 -- The average population of cities in each state in the USA ordered by state name
 
+-- Rounding values (Not in starter code) - round takes two parameters (value, and scale) - try changing 2 to 4
+-- Calculate each country's GNP by population. Round to two decimal places
+
+
+-- Now round to 4 decimal places
+
+
 -- SUBQUERIES
 
 -- Select all cities that are in Europe where the country's GNP is greater than one 
