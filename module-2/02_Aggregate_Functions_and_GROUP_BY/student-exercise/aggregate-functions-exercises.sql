@@ -106,15 +106,26 @@ order by surfacearea DESC;
 -- 14. The highest population density (population divided by surface area) of all 
 -- countries in the world. 
 -- (highest population density in world: 26277.7777)
+select name, (population / surfacearea) as density
+from country
+order by density DESC;
 
 -- 15. The population density and life expectancy of the top ten countries with the 
 -- highest life expectancies in descending order. 
 -- (highest life expectancies in world: 83.5, 166.6666, "Andorra")
+select name, (population / surfacearea) as density, lifeexpectancy
+from country
+where lifeexpectancy IS NOT NULL and lifeexpectancy != 0
+order by lifeexpectancy DESC
+limit 10;
 
 -- 16. The difference between the previous and current GNP of all the countries in 
 -- the world ordered by the absolute value of the difference. Display both 
 -- difference and absolute difference.
 -- (smallest difference: 1.00, 1.00, "Ecuador")
+select name, gnp, gnpold, (gnp - gnpold) as gnp_diff, (ABS(gnp - gnpold)) as abs_gnp_diff
+from country
+order by abs_gnp_diff;
 
 -- 17. The average population of cities in each country (hint: use city.countrycode)
 -- ordered from highest to lowest.
