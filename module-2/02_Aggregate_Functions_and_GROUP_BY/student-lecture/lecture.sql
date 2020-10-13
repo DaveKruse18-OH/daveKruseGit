@@ -35,11 +35,19 @@
 -- The average population of cities in each state in the USA ordered by state name
 
 -- SUBQUERIES
--- Find the names of cities under a given government leader
 
--- Find the names of cities whose country they belong to has not declared independence yet
+-- Select all cities that are in Europe where the country's GNP is greater than one 
+-- million (do it without a subquery first. Hint: It takes 2 separate queries...)
 
--- Additional samples
+-- Now try using a subquery (can now do it in one query)
+
+
+
+
+
+
+-- Additional samples if time allows:
+
 -- You may alias column and table names to be more descriptive
 
 -- Alias can also be used to create shorthand references, such as "c" for city and "co" for country.
