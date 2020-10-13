@@ -37,7 +37,7 @@ from country
 where population is not null and population != 0
 order by gnp_per_capita DESC;
 
--- 4. The average life expectancy of countries in South America.        KDE - round to 4 decimals.
+-- 4. The average life expectancy of countries in South America.
 -- (average life expectancy in South America: 70.9461)
 select continent, AVG(lifeexpectancy) as avg_LE
 from country
@@ -58,31 +58,35 @@ from city
 where countrycode = 'CHN'
 group by countrycode;
 
--- 7. The maximum population of all countries in the world.             KDE - Get name of country.
+-- 7. The maximum population of all countries in the world.
 -- (largest country population in world: 1277558000)
-select max(population) as population
-from country;
---group by name;
---order by population DESC;
+select name, max(population) as population
+from country
+group by name
+order by population DESC;
 
--- 8. The maximum population of all cities in the world.                KDE - Get name of city.
+-- 8. The maximum population of all cities in the world.
 -- (largest city population in world: 10500000)
-select max(population) population
-from city;
-
--- 9. The maximum population of all cities in Australia.                KDE - Get name of city.
--- (largest city population in Australia: 3276207)
-select max(population) as population
+select name, max(population) as population
 from city
-where countrycode = 'AUS';
+group by name
+order by population DESC
 
--- 10. The minimum population of all countries in the world.            KDE - show name of country
+-- 9. The maximum population of all cities in Australia.
+-- (largest city population in Australia: 3276207)
+select name, max(population) as population
+from city
+where countrycode = 'AUS'
+group by name
+order by population DESC;
+
+-- 10. The minimum population of all countries in the world.
 -- (smallest_country_population in world: 50)
-SELECT MIN(population) AS population
+SELECT name, MIN(population) AS population
 FROM country
-WHERE population IS NOT NULL AND population != 0;
---GROUP BY continent, name
---ORDER BY population ASC;
+WHERE population IS NOT NULL AND population != 0
+GROUP BY name
+ORDER BY population ASC;
 
 -- 11. The average population of cities in the United States.
 -- (avgerage city population in USA: 286955.3795)
