@@ -13,11 +13,21 @@
 -- The results should be ordered alphabetically by state name and then by city 
 -- name. 
 -- (19 rows)
+select (name || ', ' || district) as name_and_state
+from city
+where countrycode = 'USA' and district in
+(select district
+from city
+where district in ('Indiana', 'Michigan', 'Pennsylvania', 'West Virginia', 'Kentucky'))
+order by district, name;
 
 -- 2. The name, country code, and region of all countries in Africa.  The name and
 -- country code should be returned as a single column named country_and_code 
 -- and should contain values such as ‘Angola (AGO)’ 
 -- (58 rows)
+select (name, code) as country_and_code, region
+from country
+where continent = 'Africa';
 
 -- 3. The per capita GNP (i.e. GNP multipled by 1000000 then divided by population) of all countries in the 
 -- world sorted from highest to lowest. Recall: GNP is express in units of one million US Dollars 
