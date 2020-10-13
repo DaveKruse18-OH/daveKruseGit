@@ -160,7 +160,16 @@ order by city_cnt DESC;
 -- 21. The population of the largest city in each country ordered from highest to 
 -- lowest.
 -- (largest city population in world: 10500000, "IND")
+select countrycode, max(population) as lgst_city
+from city
+group by countrycode
+order by lgst_city DESC;
 
 -- 22. The average, minimum, and maximum non-null life expectancy of each continent 
 -- ordered from lowest to highest average life expectancy. 
 -- (lowest average life expectancy: 52.5719, 37.2, 76.8, "Africa")
+select continent, AVG(lifeexpectancy) as avg_le, MIN(lifeexpectancy)as min_le, MAX(lifeexpectancy) as max_le
+from country
+where lifeexpectancy is not null
+group by continent
+order by avg_le;
