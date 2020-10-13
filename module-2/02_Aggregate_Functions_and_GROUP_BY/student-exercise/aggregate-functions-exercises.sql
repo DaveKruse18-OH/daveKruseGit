@@ -32,15 +32,31 @@ where continent = 'Africa';
 -- 3. The per capita GNP (i.e. GNP multipled by 1000000 then divided by population) of all countries in the 
 -- world sorted from highest to lowest. Recall: GNP is express in units of one million US Dollars 
 -- (highest per capita GNP in world: 37459.26)
+select name, round(gnp * 1000000/population, 2) as gnp_per_capita
+from country
+where population is not null and population != 0
+order by gnp_per_capita DESC;
 
--- 4. The average life expectancy of countries in South America.
+-- 4. The average life expectancy of countries in South America.        KDE - round to 4 decimals.
 -- (average life expectancy in South America: 70.9461)
+select continent, avg(lifeexpectancy) as avg_LE
+from country
+where continent = 'South America' and lifeexpectancy IS NOT NULL
+GROUP BY continent;
 
 -- 5. The sum of the population of all cities in California.
 -- (total population of all cities in California: 16716706)
+select district, sum(population) as population
+from city
+where countrycode = 'USA' and district = 'California'
+group by district;
 
 -- 6. The sum of the population of all cities in China.
 -- (total population of all cities in China: 175953614)
+select countrycode, sum(population) as population
+from city
+where countrycode = 'CHN'
+group by countrycode;
 
 -- 7. The maximum population of all countries in the world.
 -- (largest country population in world: 1277558000)
