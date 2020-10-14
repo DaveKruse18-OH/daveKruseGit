@@ -50,15 +50,37 @@ where category.name = 'Children' and film.rating = 'G';
 
 -- 7. All of the ‘Family’ films that are rated ‘G’ and are less than 2 hours in length
 -- (3 rows)
+select film.title
+from film
+join film_category on film.film_id = film_category.film_id
+join category on film_category.category_id = category.category_id
+where category.name = 'Family' and film.rating = 'G' and film.length < 120;
 
 -- 8. All of the films featuring actor Matthew Leigh that are rated ‘G’
 -- (9 rows)
+select film.title
+from film
+join film_actor on film_actor.film_id = film.film_id
+join actor on film_actor.actor_id = actor.actor_id
+where actor.first_name = 'MATTHEW' and actor.last_name = 'LEIGH' and film.rating = 'G';
 
 -- 9. All of the ‘Sci-Fi’ films released in 2006
 -- (61 rows)
+select film.title
+from film
+join film_category on film.film_id = film_category.film_id
+join category on film_category.category_id = category.category_id
+where category.name = 'Sci-Fi' and film.release_year = '2006';
 
 -- 10. All of the ‘Action’ films starring Nick Stallone
 -- (2 rows)
+select film.title
+from film
+join film_category on film.film_id = film_category.film_id
+join category on film_category.category_id = category.category_id
+join film_actor on film_actor.film_id = film.film_id
+join actor on film_actor.actor_id = actor.actor_id
+where category.name = 'Action' and actor.first_name = 'NICK' and actor.last_name = 'STALLONE';
 
 -- 11. The address of all stores, including street address, city, district, and country
 -- (2 rows)
