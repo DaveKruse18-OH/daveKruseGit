@@ -84,9 +84,20 @@ where category.name = 'Action' and actor.first_name = 'NICK' and actor.last_name
 
 -- 11. The address of all stores, including street address, city, district, and country
 -- (2 rows)
+select address.address, city.city, country.country
+from store
+join address on store.address_id = address.address_id
+join city on address.city_id = city.city_id
+join country on city.country_id = country.country_id;
 
 -- 12. A list of all stores by ID, the store’s street address, and the name of the store’s manager
 -- (2 rows)
+select store.store_id, address.address, staff.first_name, staff.last_name
+from store
+join address on store.address_id = address.address_id
+join staff on store.manager_staff_id = staff.staff_id
+--join city on address.city_id = city.city_id
+--join country on city.country_id = country.country_id;
 
 -- 13. The first and last name of the top ten customers ranked by number of rentals 
 -- (#1 should be “ELEANOR HUNT” with 46 rentals, #10 should have 39 rentals)
