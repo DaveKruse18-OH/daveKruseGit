@@ -2,21 +2,51 @@
 
 -- 1. All of the films that Nick Stallone has appeared in
 -- (30 rows)
+select film.title
+from film
+join film_actor on film_actor.film_id = film.film_id
+join actor on film_actor.actor_id = actor.actor_id
+where actor.first_name = 'NICK' and actor.last_name = 'STALLONE';
 
 -- 2. All of the films that Rita Reynolds has appeared in
 -- (20 rows)
+select film.title
+from film
+join film_actor on film_actor.film_id = film.film_id
+join actor on film_actor.actor_id = actor.actor_id
+where actor.first_name = 'RITA' and actor.last_name = 'REYNOLDS';
 
 -- 3. All of the films that Judy Dean or River Dean have appeared in
 -- (46 rows)
+select film.title
+from film
+join film_actor on film_actor.film_id = film.film_id
+join actor on film_actor.actor_id = actor.actor_id
+where actor.first_name in ('JUDY', 'RIVER') and actor.last_name ='DEAN';
 
 -- 4. All of the the ‘Documentary’ films
 -- (68 rows)
+select film.title
+from film
+join film_category on film.film_id = film_category.film_id
+join category on film_category.category_id = category.category_id
+where category.name = 'Documentary';
 
 -- 5. All of the ‘Comedy’ films
 -- (58 rows)
+select film.title
+from film
+join film_category on film.film_id = film_category.film_id
+join category on film_category.category_id = category.category_id
+where category.name = 'Comedy';
 
 -- 6. All of the ‘Children’ films that are rated ‘G’
 -- (10 rows)
+select film.title
+from film
+join film_category on film.film_id = film_category.film_id
+join category on film_category.category_id = category.category_id
+where category.name = 'Children' and film.rating = 'G';
 
 -- 7. All of the ‘Family’ films that are rated ‘G’ and are less than 2 hours in length
 -- (3 rows)
