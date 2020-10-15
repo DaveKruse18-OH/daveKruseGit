@@ -167,6 +167,17 @@ limit 5;
 
 -- 19. The top 10 actors ranked by number of rentals of films starring that actor 
 -- (#1 should be “GINA DEGENERES” with 753 rentals and #10 should be “SEAN GUINESS” with 599 rentals)
+select count(*), actor.first_name, actor.last_name
+from rental
+join inventory on rental.inventory_id = inventory.inventory_id
+join film on inventory.film_id = film.film_id
+join film_actor on film.film_id = film_actor.film_id
+join actor on film_actor.actor_id = actor.actor_id
+--group by rental.rental_id;
+group by actor.first_name, actor.last_name
+order by count DESC
+limit 11;
 
 -- 20. The top 5 “Comedy” actors ranked by number of rentals of films in the “Comedy” category starring that actor 
 -- (#1 should have 87 rentals and #5 should have 72 rentals)
+
