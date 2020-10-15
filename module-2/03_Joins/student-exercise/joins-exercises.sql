@@ -121,11 +121,28 @@ limit 10;
 -- (NOTE: Keep in mind that an employee may work at multiple stores.)
 -- (Store 1 has 7928 total rentals and Store 2 has 8121 total rentals)
 
+
 -- 16. The top ten film titles by number of rentals
 -- (#1 should be “BUCKET BROTHERHOOD” with 34 rentals and #10 should have 31 rentals)
+select film.title, count(*)
+from film
+join inventory on inventory.film_id = film.film_id
+join rental on rental.inventory_id = inventory.inventory_id
+group by film.title
+order by count DESC
+limit 10;
 
 -- 17. The top five film categories by number of rentals 
 -- (#1 should be “Sports” with 1179 rentals and #5 should be “Family” with 1096 rentals)
+select category.name, count(*)
+from category
+join film_category on film_category.category_id = category.category_id
+join film on film.film_id = film_category.film_id
+join inventory on inventory.film_id = film.film_id
+join rental on rental.inventory_id = inventory.inventory_id
+group by category.name
+order by count DESC
+limit 5;
 
 -- 18. The top five Action film titles by number of rentals 
 -- (#1 should have 30 rentals and #5 should have 28 rentals)
