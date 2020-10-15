@@ -189,7 +189,6 @@ join film_category on film.film_id = film_category.film_id
 join category on film_category.category_id = category.category_id
 join actor on film_actor.actor_id = actor.actor_id
 where category.name = 'Comedy'
---group by rental.rental_id;
 group by actor.first_name, actor.last_name
 order by count DESC
 limit 5;
