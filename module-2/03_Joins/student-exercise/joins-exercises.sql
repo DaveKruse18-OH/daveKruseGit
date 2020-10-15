@@ -101,6 +101,12 @@ join staff on store.manager_staff_id = staff.staff_id
 
 -- 13. The first and last name of the top ten customers ranked by number of rentals 
 -- (#1 should be “ELEANOR HUNT” with 46 rentals, #10 should have 39 rentals)
+select rental.customer_id, customer.first_name, customer.last_name, count(*)
+from rental
+join customer on rental.customer_id = customer.customer_id
+group by rental.customer_id, customer.first_name, customer.last_name
+order by count DESC
+limit 10;
 
 -- 14. The first and last name of the top ten customers ranked by dollars spent 
 -- (#1 should be “KARL SEAL” with 221.55 spent, #10 should be “ANA BRADLEY” with 174.66 spent)
