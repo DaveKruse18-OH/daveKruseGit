@@ -120,7 +120,7 @@ limit 10;
 -- 15. The store ID, street address, total number of rentals, total amount of sales (i.e. payments), and average sale of each store.
 -- (NOTE: Keep in mind that an employee may work at multiple stores.)
 -- (Store 1 has 7928 total rentals and Store 2 has 8121 total rentals)
-select store.store_id, address.address, sum(payment.amount), count(rental.rental_id), (sum(payment.amount) / count(rental.rental_id)) as average
+select store.store_id, address.address, sum(payment.amount), count(rental.rental_id), AVG(payment.amount) as averageSale
 from payment
 join rental on payment.rental_id = rental.rental_id
 join inventory on rental.inventory_id = inventory.inventory_id
