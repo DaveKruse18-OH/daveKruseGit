@@ -146,6 +146,16 @@ limit 5;
 
 -- 18. The top five Action film titles by number of rentals 
 -- (#1 should have 30 rentals and #5 should have 28 rentals)
+select film.title, count(*)
+from rental
+join inventory on rental.inventory_id = inventory.inventory_id
+join film on inventory.film_id = film.film_id
+join film_category on film_category.film_id = film.film_id
+join category on film_category.category_id = category.category_id
+where category.name = 'Action'
+group by film.title
+order by count DESC
+limit 5;
 
 -- 19. The top 10 actors ranked by number of rentals of films starring that actor 
 -- (#1 should be “GINA DEGENERES” with 753 rentals and #10 should be “SEAN GUINESS” with 599 rentals)
