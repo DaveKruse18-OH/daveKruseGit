@@ -110,6 +110,12 @@ limit 10;
 
 -- 14. The first and last name of the top ten customers ranked by dollars spent 
 -- (#1 should be “KARL SEAL” with 221.55 spent, #10 should be “ANA BRADLEY” with 174.66 spent)
+select payment.customer_id, customer.first_name, customer.last_name, sum(payment.amount)
+from payment
+join customer on payment.customer_id = customer.customer_id
+group by payment.customer_id, customer.first_name, customer.last_name
+order by sum DESC
+limit 10;
 
 -- 15. The store ID, street address, total number of rentals, total amount of sales (i.e. payments), and average sale of each store.
 -- (NOTE: Keep in mind that an employee may work at multiple stores.)
