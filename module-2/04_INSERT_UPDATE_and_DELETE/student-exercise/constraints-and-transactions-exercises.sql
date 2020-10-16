@@ -110,5 +110,6 @@ delete from category where name = 'Mathmagical';
 -- describe any remaining adjustments needed before the film "Euclidean PI" can
 -- be removed from the film table.
 select * from information_schema.table_constraints
+select * from information_schema.constraint_column_usage
 select * from information_schema.referential_constraints
 <film_id would have to be removed from the 'inventory', 'film_category', and 'film_actor' tables BEFORE you could remove it from the 'film' table.>
