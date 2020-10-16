@@ -79,7 +79,7 @@ select * from inventory where film_id = 1001;           -- inventory_id = 4582, 
 -- (Did it succeed? Why?)
 -- <YOUR ANSWER HERE>
 delete from film where title = 'Euclidean PI';
-<Failed to delete because the film_id is foreign key in other tables.>
+<Failed to delete because the film_id is foreign key in other tables, and its removal would violate a constraint.>
 
 -- 9. Delete Mathmagical from the category table.
 -- (Did it succeed? Why?)
@@ -92,12 +92,19 @@ delete from category where name = 'Mathmagical';
 -- 10. Delete all links to Mathmagical in the film_category tale.
 -- (Did it succeed? Why?)
 -- <YOUR ANSWER HERE>
+select * from film_category where category_id = 17;     -- 5 records associating category_id 17 with film_id's 1001, 274, 494, 714, 996.
 
+delete from film_category where category_id = 17;
+<This command was successful because the removal did not violate any constraints established in the DB.>
 
 -- 11. Retry deleting Mathmagical from the category table, followed by retrying
 -- to delete "Euclidean PI".
 -- (Did either deletes succeed? Why?)
 -- <YOUR ANSWER HERE>
+select * from category where name = 'Mathmagical';
+
+delete from category where name = 'Mathmagical';
+<Successful because the removal does not violate any constraints after 'Mathmagical' was removed from the film_category table.>
 
 -- 12. Check database metadata to determine all constraints of the film id, and
 -- describe any remaining adjustments needed before the film "Euclidean PI" can
