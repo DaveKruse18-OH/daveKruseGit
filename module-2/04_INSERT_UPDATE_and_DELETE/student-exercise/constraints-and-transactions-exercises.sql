@@ -30,13 +30,40 @@ insert into film_actor (film_id, actor_id) values (1001, 202);
 select * from film_actor where film_id = 1001; 
 
 -- 4. Add Mathmagical to the category table.
+select * from category;
+
+insert into category (name) values ('Mathmagical');
+
+select * from category;                                 -- 17
 
 -- 5. Assign the Mathmagical category to the following films, "Euclidean PI",
 -- "EGG IGBY", "KARATE MOON", "RANDOM GO", and "YOUNG LANGUAGE"
+select * from film where title = 'Euclidean PI';        -- 1001
+select * from film where title = 'EGG IGBY';            -- 274
+select * from film where title = 'KARATE MOON';         -- 494
+select * from film where title = 'RANDOM GO';           -- 714
+select * from film where title = 'YOUNG LANGUAGE';      -- 996
+
+update film_category set category_id = 17 where film_id = 274;
+update film_category set category_id = 17 where film_id = 494;
+update film_category set category_id = 17 where film_id = 714;
+update film_category set category_id = 17 where film_id = 996;
+insert into film_category (film_id, category_id) values (1001, 17);
+
+select * from film_category where film_id in (1001, 274, 494, 714, 996);
 
 -- 6. Mathmagical films always have a "G" rating, adjust all Mathmagical films
 -- accordingly.
 -- (5 rows affected)
+select *
+from film
+join film_category on film.film_id = film_category.film_id
+where film_category.category_id = 17;
+
+update film
+set rating = 'G'
+from film_category
+where film_category.category_id = 17;
 
 -- 7. Add a copy of "Euclidean PI" to all the stores.
 
