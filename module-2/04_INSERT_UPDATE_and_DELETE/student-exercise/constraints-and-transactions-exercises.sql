@@ -16,7 +16,7 @@ select * from language;
 insert into film (title, description, release_year, language_id, original_language_id, length)
 values ('Euclidean PI', 'The epic story of Euclid as a pizza delivery boy in ancient Greece', 2008, 1, 1, 198);
 
-select * from film where title = 'Euclidean PI';
+select * from film where title = 'Euclidean PI';        -- 1001
 
 -- 3. Hampton Avenue plays Euclid, while Lisa Byway plays his slightly
 -- overprotective mother, in the film, "Euclidean PI". Add them to the film.
@@ -66,20 +66,33 @@ from film_category
 where film_category.category_id = 17;
 
 -- 7. Add a copy of "Euclidean PI" to all the stores.
+select * from inventory;
+
+insert into inventory (store_id, film_id) values (1, 1001);
+insert into inventory (store_id, film_id) values (2, 1001);
+
+select * from inventory where film_id = 1001;           -- inventory_id = 4582, 4583
 
 -- 8. The Feds have stepped in and have impounded all copies of the pirated film,
 -- "Euclidean PI". The film has been seized from all stores, and needs to be
 -- deleted from the film table. Delete "Euclidean PI" from the film table.
 -- (Did it succeed? Why?)
 -- <YOUR ANSWER HERE>
+delete from film where title = 'Euclidean PI';
+<Failed to delete because the film_id is foreign key in other tables.>
 
 -- 9. Delete Mathmagical from the category table.
 -- (Did it succeed? Why?)
 -- <YOUR ANSWER HERE>
+select * from category;
+
+delete from category where name = 'Mathmagical';
+<Failed to delete because this record is referenced from other tables (i.e. foreign key), thus the removal would break a constraint.>
 
 -- 10. Delete all links to Mathmagical in the film_category tale.
 -- (Did it succeed? Why?)
 -- <YOUR ANSWER HERE>
+
 
 -- 11. Retry deleting Mathmagical from the category table, followed by retrying
 -- to delete "Euclidean PI".
