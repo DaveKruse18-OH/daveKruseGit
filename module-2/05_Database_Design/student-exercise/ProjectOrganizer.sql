@@ -60,5 +60,21 @@ insert into department (departmentName) values ('Accounting');
 insert into department (departmentName) values ('Engineering');
 insert into department (departmentName) values ('Human Resources');
 
+insert into employee (jobTitle, lastName, firstName, gender, dateOfBirth, dateOfHire, departmentNumber) values ('Mechanical Engineer', 'Kruse', 'Marissa', 'F', '1997-10-30', '2019-03-02', 2);
+insert into employee (jobTitle, lastName, firstName, gender, dateOfBirth, dateOfHire, departmentNumber) values ('Software Engineer', 'Kruse', 'David', 'M', '1985-10-18', '2015-07-18', 2);
+insert into employee (jobTitle, lastName, firstName, gender, dateOfBirth, dateOfHire, departmentNumber) values ('Director', 'Smith', 'Sam', 'M', '1998-11-30', '2017-05-03', 3);
+insert into employee (jobTitle, lastName, firstName, gender, dateOfBirth, dateOfHire, departmentNumber) values ('Administrator', 'Yelic', 'Lisa', 'F', '1997-07-30', '2015-12-02', 3);
+insert into employee (jobTitle, lastName, firstName, gender, dateOfBirth, dateOfHire, departmentNumber) values ('Accountant', 'Doe', 'John', 'M', '1995-06-30', '2017-07-15', 1);
+insert into employee (jobTitle, lastName, firstName, gender, dateOfBirth, dateOfHire, departmentNumber) values ('Manager', 'Charles', 'Don', 'M', '1995-03-02', '2018-05-13', 1);
+
+insert into employee_project (employeeId, projectNumber) values (1, 1);
+insert into employee_project (employeeId, projectNumber) values (6, 1);
+insert into employee_project (employeeId, projectNumber) values (2, 2);
+insert into employee_project (employeeId, projectNumber) values (5, 2);
+insert into employee_project (employeeId, projectNumber) values (3, 3);
+insert into employee_project (employeeId, projectNumber) values (4, 3);
+insert into employee_project (employeeId, projectNumber) values (2, 4);
+insert into employee_project (employeeId, projectNumber) values (3, 4);
+
 COMMIT TRANSACTION;
         
