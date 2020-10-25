@@ -8,42 +8,43 @@ import org.springframework.web.client.RestTemplate;
 public class App {
 
     private static final String API_URL = "http://localhost:3000/auctions";
-    public static RestTemplate restTemplate = new RestTemplate();
-    private static Scanner scanner;
+    public RestTemplate restTemplate = new RestTemplate();
+    private Scanner scanner;
 
     public static void main(String[] args) {
-        init();
-        run();
+    	App app = new App();
+        app.init();
+        app.run();
     }
 
     /**
      * Here to support testing
      */
-    public static void init() {
+    public void init() {
         scanner = new Scanner(System.in);
     }
 
-    public static Auction[] listAllAuctions() {
+    public Auction[] listAllAuctions() {
         // api code here
         return null;
     }
 
-    public static Auction listDetailsForAuction() {
+    public Auction listDetailsForAuction() {
         // api code here
         return null;
     }
 
-    public static Auction[] findAuctionsSearchTitle() {
+    public Auction[] findAuctionsSearchTitle() {
         // api code here
         return null;
     }
 
-    public static Auction[] findAuctionsSearchPrice() {
+    public Auction[] findAuctionsSearchPrice() {
         // api code here
         return null;
     }
 
-    private static void run() {
+    private void run() {
         int menuSelection = 999;
 
         printGreeting();
@@ -76,7 +77,7 @@ public class App {
         }
     }
 
-    private static void printGreeting() {
+    private void printGreeting() {
         System.out.println("");
         System.out.println("Welcome to Online Auctions! Please make a selection: ");
         System.out.println("1: List all auctions");
@@ -88,7 +89,7 @@ public class App {
         System.out.print("Please choose an option: ");
     }
 
-    private static void printAuctions(Auction[] auctions) {
+    private void printAuctions(Auction[] auctions) {
         if (auctions != null) {
             System.out.println("--------------------------------------------");
             System.out.println("Auctions");
@@ -99,7 +100,7 @@ public class App {
         }
     }
 
-    private static void printAuction(Auction auction) {
+    private void printAuction(Auction auction) {
         if (auction != null) {
             System.out.println("--------------------------------------------");
             System.out.println("Auction Details");

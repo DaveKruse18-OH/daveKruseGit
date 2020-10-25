@@ -7,10 +7,11 @@ import org.springframework.web.client.RestTemplate;
 public class App {
 
     public static void main(String[] args) {
-        run();
+        App app = new App();
+        app.run();
     }
 
-    private static void run() {
+    private void run() {
         Hotel[] hotels = null;
         Scanner scanner = new Scanner(System.in);
         int menuSelection = 999;
@@ -50,7 +51,7 @@ public class App {
         System.exit(0);
     }
 
-    private static void printGreeting() {
+    private void printGreeting() {
         System.out.println("");
         System.out.println("Welcome to Tech Elevator Hotels. Please make a selection: ");
         System.out.println("1: List Hotels");
@@ -64,7 +65,7 @@ public class App {
         System.out.print("Please choose an option: ");
     }
 
-    private static void printHotels(Hotel[] hotels) {
+    private void printHotels(Hotel[] hotels) {
         System.out.println("--------------------------------------------");
         System.out.println("Hotels");
         System.out.println("--------------------------------------------");
@@ -73,11 +74,11 @@ public class App {
         }
     }
 
-    private static void printHotel(Hotel hotel) {
+    private void printHotel(Hotel hotel) {
         System.out.println(hotel.toString());
     }
 
-    private static void printReviews(Review[] reviews) {
+    private void printReviews(Review[] reviews) {
         for (Review review : reviews) {
             System.out.println(review.toString());
         }
