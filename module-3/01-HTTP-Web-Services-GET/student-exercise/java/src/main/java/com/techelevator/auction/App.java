@@ -8,43 +8,64 @@ import org.springframework.web.client.RestTemplate;
 public class App {
 
     private static final String API_URL = "http://localhost:3000/auctions";
-    public RestTemplate restTemplate = new RestTemplate();
-    private Scanner scanner;
+    public static RestTemplate restTemplate = new RestTemplate();
+    private static Scanner scanner;
 
     public static void main(String[] args) {
-    	App app = new App();
-        app.init();
-        app.run();
+    	//App app = new App();
+        init();
+        run();
     }
 
     /**
      * Here to support testing
      */
-    public void init() {
+    public static void init() {
         scanner = new Scanner(System.in);
     }
 
-    public Auction[] listAllAuctions() {
-        // api code here
-        return null;
+    public static Auction[] listAllAuctions() {
+       	Auction[] auctions = restTemplate.getForObject(API_URL, Auction[].class);
+       	//printAuctions(auctions);
+        return auctions;
     }
 
-    public Auction listDetailsForAuction() {
-        // api code here
-        return null;
+    public static Auction listDetailsForAuction() {
+    	Auction auction = null;
+        System.out.println("Please enter auction to view: ");
+        try {
+	        int id = Integer.parseInt(scanner.nextLine());
+	        auction = restTemplate.getForObject(API_URL + "/" + id, Auction.class);
+        }
+        catch (NumberFormatException exception) {
+        	//exception.printStackTrace();
+        }
+        return auction;
     }
 
-    public Auction[] findAuctionsSearchTitle() {
-        // api code here
-        return null;
+    public static Auction[] findAuctionsSearchTitle() {
+        System.out.println("Please enter title of auctions to view: ");
+        String title = scanner.nextLine();
+        Auction[] myAuctions = restTemplate.getForObject(API_URL + "?title_like=" + title, Auction[].class);
+        //printAuctions(myAuctions);
+        return myAuctions;
     }
 
-    public Auction[] findAuctionsSearchPrice() {
-        // api code here
-        return null;
+    public static Auction[] findAuctionsSearchPrice() {
+    	Auction[] auctions = null;
+        System.out.println("Please enter max price of auctions to view: ");
+        try {
+        	//String maxPrice = scanner.nextLine();
+        	double maximumPrice = Double.parseDouble(scanner.nextLine());
+        	auctions = restTemplate.getForObject(API_URL + "?currentBid_lte=" + maximumPrice, Auction[].class);
+        }
+        catch (NumberFormatException e) {
+        	e.printStackTrace();
+        }
+        return auctions;
     }
 
-    private void run() {
+    private static void run() {
         int menuSelection = 999;
 
         printGreeting();
@@ -77,7 +98,7 @@ public class App {
         }
     }
 
-    private void printGreeting() {
+    private static void printGreeting() {
         System.out.println("");
         System.out.println("Welcome to Online Auctions! Please make a selection: ");
         System.out.println("1: List all auctions");
@@ -89,7 +110,7 @@ public class App {
         System.out.print("Please choose an option: ");
     }
 
-    private void printAuctions(Auction[] auctions) {
+    private static void printAuctions(Auction[] auctions) {
         if (auctions != null) {
             System.out.println("--------------------------------------------");
             System.out.println("Auctions");
@@ -100,7 +121,7 @@ public class App {
         }
     }
 
-    private void printAuction(Auction auction) {
+    private static void printAuction(Auction auction) {
         if (auction != null) {
             System.out.println("--------------------------------------------");
             System.out.println("Auction Details");
