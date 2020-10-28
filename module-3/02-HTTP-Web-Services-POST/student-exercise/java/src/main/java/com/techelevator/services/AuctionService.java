@@ -68,13 +68,57 @@ public class AuctionService {
     }
 
     public Auction add(String auctionString) {
-        // place code here
-        return null;
+    	// Turns comma delimited file into an auction object.
+        Auction auction = makeAuction(auctionString);
+        
+        // Create HTTP headers and set content type to JSON.
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        
+        // Declare HTTPEntity Variable.
+        // Instantiate an HttpEntity object and pass the reservation and hearder to it.
+        HttpEntity<Auction> entity = new HttpEntity<>(auction, headers);
+        
+        // Call the web service.
+        Auction auctionItem = null;
+        try {
+        	auctionItem = restTemplate.postForObject(BASE_URL, entity, Auction.class);
+        } catch (RestClientResponseException e) {
+        	console.printError("Error adding item to auction. Please try again.");
+        	return auctionItem;
+        } catch (ResourceAccessException e) {
+        	console.printError("A network error occurred.");
+        	return auctionItem;
+        }
+        return auctionItem;
     }
 
     public Auction update(String auctionString) {
-        // place code here
-        return null;
+    	// Turns comma delimited file into an auction object.
+        Auction auction = makeAuction(auctionString);
+        if (auction == null) {
+        	return null;
+        }
+        
+        // Create HTTP headers and set content type to JSON.
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        
+        // Declare HTTPEntity Variable.
+        // Instantiate an HttpEntity object and pass the reservation and hearder to it.
+        HttpEntity<Auction> entity = new HttpEntity<>(auction, headers);
+        
+        // Call the web service.
+        try {
+        	restTemplate.put(BASE_URL +  "/" + auction.getId(), entity);
+        } catch (RestClientResponseException e) {
+        	console.printError("No auctions found. Please try again.");
+        	return null;
+        } catch (ResourceAccessException e) {
+        	console.printError("A network error occurred.");
+        	return null;
+        }
+        return auction;
     }
 
     public boolean delete(int id) {
