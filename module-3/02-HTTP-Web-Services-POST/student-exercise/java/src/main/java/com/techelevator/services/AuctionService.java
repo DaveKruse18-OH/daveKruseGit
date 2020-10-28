@@ -122,8 +122,27 @@ public class AuctionService {
     }
 
     public boolean delete(int id) {
-    	// place code here
-    	return false; 
+        // Call the web service.
+        try {
+        	restTemplate.delete(BASE_URL +  "/" + id);
+        } catch (RestClientResponseException e) {
+        	if (e.getRawStatusCode() == 404) {
+        		System.out.println("Wrong URL.");
+        		return false;
+        	}
+        	if (e.getRawStatusCode() == 401) {
+        		System.out.println("You must login first before deleting.");
+        		return false;
+        	}
+        	if (!((e.getRawStatusCode() >= 200) && (e.getRawStatusCode() <= 299))) {
+        		System.out.println("Didn't delete for some reason.  Better figure it out!");
+        		return false;
+        	}
+        } catch (ResourceAccessException e) {
+        	console.printError("A network error occurred.");
+        	return false;
+        }
+        return true;
     }
 
     private HttpEntity<Auction> makeEntity(Auction auction) {
