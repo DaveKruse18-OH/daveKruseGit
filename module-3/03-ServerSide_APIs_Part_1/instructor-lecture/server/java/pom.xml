@@ -8,7 +8,7 @@
         <relativePath /> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.techelevator</groupId>
-    <artifactId>m03d03-serverside-apis-part1-lecture-server</artifactId>
+    <artifactId>m03d03-serverside-apis-part1-lecture-server-instructor</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
     <properties>
