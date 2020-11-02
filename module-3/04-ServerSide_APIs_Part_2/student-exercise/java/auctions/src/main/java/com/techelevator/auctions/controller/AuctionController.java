@@ -66,4 +66,10 @@ public class AuctionController {
     public Auction update(@PathVariable int id, @Valid @RequestBody Auction auction) throws AuctionNotFoundException {
         return dao.update(auction, id);
     }
+    
+    @ResponseStatus(code=HttpStatus.NO_CONTENT, reason="Auction successfully deleted.")
+    @RequestMapping( path = "/{id}", method = RequestMethod.DELETE)
+    public void update(@Valid @PathVariable int id) throws AuctionNotFoundException {
+        dao.delete(id);
+    }
 }
