@@ -1,0 +1,43 @@
+/api/students  	(GET)
+	Gets a list of all students
+	Success: 200 - Returns a list of students
+
+/api/students/:id    (GET)
+	Gets a single student by id
+	Success: Returns a single student if the id is valid
+	Error: returns a 404 if the student id does not exist
+	
+/api/students	(POST)
+	Creates a new student
+	Success: returns a 201 (Created)  when successful
+
+	
+/api/students/:id    (PUT)
+	Updates a specific student
+	Success: returns a 200 (OK) when successful
+	Error: returns a 404 if the student id does not exist
+	
+/api/students/:id    (DELETE)
+	Deletes a specific student
+	Success: returns a 200 (OK) when successful
+	Error: returns a 404 if the id does not exist
+	
+	
+/api/students/filter  	(GET)
+
+    Filter students by cohort only
+    Filter students by cohort and section
+             
+	Required Parameters:
+    cohort     =   Gets a list of all students by cohort
+     
+    Usage example: 	/api/students/filter?cohort=12
+    
+	Optional Parameters:
+	section    =   Gets a list of all students by swection
+
+
+	Usage example: 	/api/students/filter?cohort=12&section=green
+
+	Success: 200 
+	
