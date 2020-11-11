@@ -1,0 +1,79 @@
+
+      .container-1 div{
+        border:2px #ccc solid;
+      
+      }
+       .container-2 div {
+        border:10px #ccc dotted;
+      }
+
+    .container-1{
+      display:flex;
+      flex-direction: column;  
+      align-items:stretch;
+      /*
+        These are the properties for flex-direction: column
+    
+
+      flex-direction: column-reverse;  
+       
+      align-items:flex-start;
+      align-items:stretch;
+      align-items:center;
+      align-items:flex-end;
+      */
+
+   
+      
+    }
+    
+
+
+
+
+    .container-2{
+      display: flex;  
+      flex-direction:row;
+      justify-content:space-between;
+    
+      /*
+
+       These are the properties for flex-direction: row
+
+      justify-content:flex-start;
+      justify-content:flex-end;
+      justify-content:center;
+      justify-content:space-around;
+      justify-content:space-between;
+      */
+      
+     
+    }
+  
+  
+  
+
+  /*
+    flex items (by default) are displayed in the order that they appear in the HTML...
+    UNLESS, we choose to change the order... 
+  */
+  .box-1{
+   /* order:1;   */
+  }
+  
+  .box-2{
+  /* order:2;   */
+  }
+  
+  .box-3{
+    /* order:3;   */
+  }
+  
+  /*
+   flex basis applies to the flex items inside the container. This sets the default width of 
+   each item to 30% of the overall width BEFORE appling any space rules.
+  */
+  .container-2-box{
+    flex-basis: 30%;  
+  }
+  
