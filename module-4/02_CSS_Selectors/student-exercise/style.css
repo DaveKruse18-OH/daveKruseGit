@@ -35,6 +35,8 @@ aside img {
 
 main {
   margin-left: 200px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 nav li {
@@ -58,4 +60,17 @@ nav li a {
 
 nav li a:hover {
   text-decoration: underline;
+}
+
+header {
+  height: 120px;
+}
+
+header img {
+  height: 80%;
+}
+
+main img.banner {
+  display: block;
+  width: 100%;
 }
