@@ -21,7 +21,7 @@ aside {
   width: 200px;
   border-right-width: 1px;
   border-right-style: solid;
-  border-right-color: #00ADEE;
+  border-right-color: rgba(0,173,238,0.4);
   height: 100vh;
   padding-left: 20px;
   padding-right: 20px;
@@ -45,7 +45,7 @@ nav li {
   text-transform: uppercase;
   border-bottom-width: 1px;
   border-bottom-style: solid;
-  border-bottom-color: #00ADEE;
+  border-bottom-color: rgba(0,173,238,0.4);
   margin: 10px auto;
   margin-bottom: 10px;
   width: 80%;
@@ -73,4 +73,29 @@ header img {
 main img.banner {
   display: block;
   width: 100%;
+}
+
+main section div {
+  display: inline-block;
+  width: 33%;
+  padding-right: 20px;
+  margin-top: 20px;
+}
+
+main section div h2 {
+  color: #8CC36F;
+}
+
+main section div h2 i {
+  margin-right: 10px;
+}
+
+#what-we-do, #our-work {
+  border-right-width: 1px;
+  border-right-style: solid;
+  border-right-color: rgba(170,239,135,0.8);
+}
+
+#our-work, #contact-us {
+  padding-left: 20px;
 }
