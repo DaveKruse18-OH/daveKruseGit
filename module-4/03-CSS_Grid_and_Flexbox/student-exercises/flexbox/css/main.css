@@ -20,12 +20,19 @@ ul.social-icons {
 
   display: flex;
   justify-content: center;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
-nav {}
+nav {
+  justify-content: flex-end;
+}
 
 #right-panel {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 /* YOU WON'T NEED TO CHANGE ANY STYLES BELOW THIS LINE */
