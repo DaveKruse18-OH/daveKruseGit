@@ -4,21 +4,29 @@ body {
   min-height: 100vh;
   /* Photo by Andre Furtado on Unsplash */
   background: url(../img/andre-furtado-JtV6zyOZSrA-unsplash.jpg) left / cover no-repeat;
+  display: flex;
 }
 
 #left-panel {
   background-color: #F7F7F7;
+  flex-direction: column;
+  width: 35%;
 }
 
 ul.social-icons {
   list-style-type: none;
   margin: 20px 20px;
   padding: 0;
+
+  display: flex;
+  justify-content: center;
+  justify-content: space-around;
 }
 
 nav {}
 
-#right-panel {}
+#right-panel {
+}
 
 /* YOU WON'T NEED TO CHANGE ANY STYLES BELOW THIS LINE */
 
