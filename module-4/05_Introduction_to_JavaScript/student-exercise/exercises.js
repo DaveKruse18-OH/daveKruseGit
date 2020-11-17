@@ -200,6 +200,16 @@ parameter, `x` passed in.
 	filterMultiplesOfX([3, 5, 1, 9, 18, 21, 42, 67], 3) → [3, 9, 18, 21, 42]
 	filterMultiplesOfX([3, 5, 10, 20, 18, 21, 42, 67], 5) → [5, 10, 20]
 */
+function filterMultiplesOfX(array, n) {
+	let returnArray = [];
+	for (let x = 0; x < array.length; x++) {
+		if ((array[x] % n) == 0) {
+			returnArray.push(array[x]);
+		}
+	}
+	return returnArray;
+}
+
 
 /*
 12. **createObject** Write a function that creates an object with a property called 
@@ -213,3 +223,11 @@ firstName, lastName, and age. Populate the properties with your values.
 		age
 	}
 */
+function createObject() {
+	let obj = {
+		firstName: "Tom",
+		lastName: "Sawyer",
+		age: 17
+	}
+	return obj;
+}
