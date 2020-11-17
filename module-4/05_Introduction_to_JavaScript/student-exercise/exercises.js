@@ -117,7 +117,19 @@ or false otherwise.
 		cigarParty(70, true) → true
 */
 function cigarParty(a, b) {
-	
+	if (b) {
+		if (a >= 40) {
+			return true;
+		} else {
+			return false;
+		}
+	} else {
+		if ((a >= 40) && (a <= 60)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }
 
 
@@ -130,6 +142,19 @@ function cigarParty(a, b) {
 		fizzBuzz(15) → "FizzBuzz"
 		fizzBuzz(8) → 8
 */
+function fizzBuzz(a) {
+	if (((a % 3) == 0) && ((a % 5) != 0)) {
+		return "Fizz";
+	}
+	if (((a % 3) != 0) && ((a % 5) == 0)) {
+		return "Buzz";
+	}
+	if (((a % 3) == 0) && ((a % 5) == 0)) {
+		return "FizzBuzz";
+	}
+	return a;
+}
+
 
 /*
 9. **filterEvens** Write a function that filters an array to only include even numbers.
@@ -139,6 +164,16 @@ function cigarParty(a, b) {
 	filterEvens([2, 4, 6]) → [2, 4, 6]
 	filterEvens([100, 8, 21, 24, 62, 9, 7]) → [100, 8, 24, 62]
 */
+function filterEvens(array) {
+	let returnArray = [];
+	for (let x = 0; x < array.length; x++) {
+		if ((array[x] % 2) == 0) {
+			returnArray.push(array[x]);
+		}
+	}
+	return returnArray;
+}
+
 
 /*
 10. **filterBigNumbers** Write a function that filters numbers greater than or equal to 100.
@@ -147,6 +182,16 @@ function cigarParty(a, b) {
 	filterBigNumbers([3, 2, 7, 1, -100, -120]) → []
 	filterBigNumbers([]) → []
 */
+function filterBigNumbers(array) {
+	let returnArray = [];
+	for (let x = 0; x < array.length; x++) {
+		if (array[x] >= 100) {
+			returnArray.push(array[x]);
+		}
+	}
+	return returnArray;
+}
+
 
 /*
 11. **filterMultiplesOfX** Write a function to filter numbers that are a multiple of a 
