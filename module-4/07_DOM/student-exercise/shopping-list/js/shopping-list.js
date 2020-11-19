@@ -19,11 +19,7 @@ function displayGroceries() {
    const groceryList = document.getElementById('groceries');
    groceries.forEach((item) => {
        const node = document.createElement('li');
-//       console.log(item);
        node.innerText = item;
-//       //groceryList.insertAdjacentElement('afterbegin', node);
-//       //groceryList.insertAdjacentElement('beforeend', node);
-//       //groceryList.insertAdjacentElement(node);
        groceryList.appendChild(node);
    });
 }
@@ -32,7 +28,14 @@ function displayGroceries() {
  * This function will be called when the button is clicked. You will need to get a reference
  * to every list item and add the class completed to each one
  */
-function markCompleted() {}
+function markCompleted() {
+  const groceryList = document.querySelectorAll('li');
+  groceryList.forEach((item) => {
+    item.classList.add('completed');
+  });
+  //const groceryList = document.getElementById('groceries');
+  //groceryList.classList.add('completed');
+}
 
 setPageTitle();
 
