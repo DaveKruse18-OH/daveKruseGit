@@ -37,5 +37,19 @@ function displayGroceries() {
   });
 }
 
-setPageTitle();
-displayGroceries();
+function markComplete() {
+  // Do something.
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  setPageTitle();
+  displayGroceries();
+
+  const liList = document.querySelectorAll('li');
+  liList.forEach((item) => {
+    item.addEventListener('click', (event) => {
+      markComplete(event.target);
+    });
+  }
+);
+});
