@@ -37,8 +37,12 @@ function displayGroceries() {
   });
 }
 
-function markComplete() {
-  // Do something.
+function markComplete(item) {
+  if (item.classList.contains('completed')) {
+    item.classList.remove('completed');
+  } else {
+    item.classList.add('completed');
+  }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -48,8 +52,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const liList = document.querySelectorAll('li');
   liList.forEach((item) => {
     item.addEventListener('click', (event) => {
-      markComplete(event.target);
+      
+      markComplete(item);
+      const c = item.querySelector('i');
+      c.classList.add('completed');
+      
     });
-  }
-);
+  });
 });
