@@ -50,9 +50,18 @@ function toggleItem(item) {
   }
 }
 
+function markIncomplete(item) {
+  const c = item.querySelector('i');
+
+  if (item.classList.contains('completed')) {
+    item.classList.remove('completed');
+    c.classList.remove('completed');
+  }
+}
+
 function toggleAll(ta) {
   const list = document.querySelectorAll('li');
-  if (ta.innerText == "MARK ALL COMPLETE") {
+  if (ta.innerText.toLowerCase() == "MARK ALL COMPLETE".toLowerCase()) {
     list.forEach((item) => {
       const c = item.querySelector('i');
       if (!item.classList.contains('completed')) {
@@ -60,10 +69,10 @@ function toggleAll(ta) {
         c.classList.add('completed');
       }
     });
-    ta.innerText = "MARK ALL INCOMPLETE";
+    ta.innerText = "Mark All Incomplete";
     return;
   }
-  if (ta.innerText == "MARK ALL INCOMPLETE") {
+  if (ta.innerText.toLowerCase() == "MARK ALL INCOMPLETE".toLowerCase()) {
     list.forEach((item) => {
       const c = item.querySelector('i');
       if (item.classList.contains('completed')) {
@@ -71,7 +80,7 @@ function toggleAll(ta) {
         c.classList.remove('completed');
       }
     });
-    ta.innerText = "MARK ALL COMPLETE";
+    ta.innerText = "Mark All Complete";
     return;
   }
  
@@ -93,7 +102,17 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
-  //const liList = document.querySelectorAll('toggleAll');
+  const dblList = document.querySelectorAll('li');
+  dblList.forEach((item) => {
+    item.addEventListener('dblclick', (event) => {
+      
+      markIncomplete(item);
+
+      
+    });
+  });
+
+
   const ta = document.getElementById('toggleAll');
   ta.addEventListener('click', (event) => {
       
