@@ -37,26 +37,70 @@ function displayGroceries() {
   });
 }
 
-function markComplete(item) {
+function toggleItem(item) {
+  const c = item.querySelector('i');
+  //c.classList.add('completed');
+
   if (item.classList.contains('completed')) {
     item.classList.remove('completed');
+    c.classList.remove('completed');
   } else {
     item.classList.add('completed');
+    c.classList.add('completed');
   }
+}
+
+function toggleAll(ta) {
+  const list = document.querySelectorAll('li');
+  if (ta.innerText == "MARK ALL COMPLETE") {
+    list.forEach((item) => {
+      const c = item.querySelector('i');
+      if (!item.classList.contains('completed')) {
+        item.classList.add('completed');
+        c.classList.add('completed');
+      }
+    });
+    ta.innerText = "MARK ALL INCOMPLETE";
+    return;
+  }
+  if (ta.innerText == "MARK ALL INCOMPLETE") {
+    list.forEach((item) => {
+      const c = item.querySelector('i');
+      if (item.classList.contains('completed')) {
+        item.classList.remove('completed');
+        c.classList.remove('completed');
+      }
+    });
+    ta.innerText = "MARK ALL COMPLETE";
+    return;
+  }
+ 
 }
 
 document.addEventListener('DOMContentLoaded', () => {
   setPageTitle();
   displayGroceries();
 
+
   const liList = document.querySelectorAll('li');
   liList.forEach((item) => {
     item.addEventListener('click', (event) => {
       
-      markComplete(item);
-      const c = item.querySelector('i');
-      c.classList.add('completed');
+      toggleItem(item);
+
       
     });
   });
+
+
+  //const liList = document.querySelectorAll('toggleAll');
+  const ta = document.getElementById('toggleAll');
+  ta.addEventListener('click', (event) => {
+      
+    toggleAll(ta);
+
+      
+  });
+
+
 });
