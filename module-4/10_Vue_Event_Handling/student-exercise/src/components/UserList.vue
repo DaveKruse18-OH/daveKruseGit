@@ -64,9 +64,32 @@
       <button>Delete Users</button>
     </div>
 
-    <button>Add New User</button>
 
-    <form id="frmAddNewUser">
+    <!--
+    <a
+      id="show-form-button"
+      href="#"
+      v-on:click.prevent="showForm = true"
+      v-if="showForm === false"
+      >Show Form
+    </a>-->
+
+    <!--
+    <button
+      id="add-new-user"
+      v-on:click.prevent="showForm = true"
+      v-if="showForm === false"
+      >Add New User
+    </button>
+    -->
+    <button
+      id="add-new-user"
+      v-on:click.prevent="showForm = true"
+      v-on:dblclick.prevent="showForm = false"
+    >Add User
+    </button>
+
+    <form id="frmAddNewUser" v-on:submit.prevent="addNewUser()" v-if="showForm === true">
       <div class="field">
         <label for="firstName">First Name:</label>
         <input type="text" name="firstName" />
@@ -157,10 +180,15 @@ export default {
           emailAddress: "msmith@foo.com",
           status: "Disabled"
         }
-      ]
+      ],
+      showForm: false,
     };
   },
-  methods: {},
+  methods: {
+    addNewUser() {
+
+    }
+  },
   computed: {
     filteredList() {
       let filteredUsers = this.users;

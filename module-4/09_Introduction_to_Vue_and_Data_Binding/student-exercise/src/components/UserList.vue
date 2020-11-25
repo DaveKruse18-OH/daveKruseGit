@@ -26,7 +26,7 @@
       <!-- user listing goes here -->
       <tr
         class = "td"
-        v-for="user in filteredList" v-bind:key="user.username">
+        v-for="user in filteredList" v-bind:key="user.username" v-bind:class="{'disabled' : user.status == 'Disabled'}">
           <td>{{user.firstName}}</td>
           <td>{{user.lastName}}</td>
           <td>{{user.username}}</td>
