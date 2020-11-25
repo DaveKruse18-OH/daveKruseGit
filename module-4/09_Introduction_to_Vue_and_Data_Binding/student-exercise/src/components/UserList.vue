@@ -11,12 +11,12 @@
     </thead>
     <tbody>
       <tr>
-        <td><input type="text" id="firstNameFilter"/></td>
-        <td><input type="text" id="lastNameFilter"/></td>
-        <td><input type="text" id="usernameFilter"/></td>
-        <td><input type="text" id="emailFilter"/></td>
+        <td><input type="text" id="firstNameFilter" v-model="filter.firstName"/></td>
+        <td><input type="text" id="lastNameFilter" v-model="filter.lastName"/></td>
+        <td><input type="text" id="usernameFilter" v-model="filter.username"/></td>
+        <td><input type="text" id="emailFilter" v-model="filter.emailAddress"/></td>
         <td>
-          <select id="statusFilter">
+          <select id="statusFilter" v-model="filter.status">
             <option value="">Show All</option>
             <option value="Active">Active</option>
             <option value="Disabled">Disabled</option>
@@ -26,7 +26,7 @@
       <!-- user listing goes here -->
       <tr
         class = "td"
-        v-for="user in users" v-bind:key="user.id">
+        v-for="user in filteredList" v-bind:key="user.username">
           <td>{{user.firstName}}</td>
           <td>{{user.lastName}}</td>
           <td>{{user.username}}</td>
@@ -49,7 +49,50 @@ export default {
         { firstName: 'Ben', lastName: 'Carter', username: 'bcarter', emailAddress: 'bcarter@gmail.com', status: 'Active' },
         { firstName: 'Katie', lastName: 'Jackson', username: 'kjackson', emailAddress: 'kjackson@yahoo.com', status: 'Active' },
         { firstName: 'Mark', lastName: 'Smith', username: 'msmith', emailAddress: 'msmith@foo.com', status: 'Disabled' }
-      ]
+      ],
+      filter: {
+        firstName: '',
+        lastName: '',
+        username: '',
+        emailAddress: '',
+        status: ''
+      }
+    }
+  },
+  computed: {
+    filteredList() {
+      let filteredUsers = this.users;
+      if (this.filter.firstName != '') {
+        filteredUsers = filteredUsers.filter((user) => {
+          return (user.firstName.includes(this.filter.firstName));
+        });
+      }
+
+      if (this.filter.lastName != '') {
+        filteredUsers = filteredUsers.filter((user) => {
+          return (user.lastName.includes(this.filter.lastName));
+        });
+      }
+
+      if (this.filter.username != '') {
+        filteredUsers = filteredUsers.filter((user) => {
+          return (user.username.includes(this.filter.username));
+        });
+      }
+
+      if (this.filter.emailAddress != '') {
+        filteredUsers = filteredUsers.filter((user) => {
+          return (user.emailAddress.includes(this.filter.emailAddress));
+        });
+      }
+
+      if (this.filter.status != '') {
+        filteredUsers = filteredUsers.filter((user) => {
+          return (user.status.includes(this.filter.status));
+        });
+      }
+
+      return filteredUsers;
     }
   }
 }
