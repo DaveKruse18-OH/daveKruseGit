@@ -52,16 +52,17 @@
           <td>{{ user.emailAddress }}</td>
           <td>{{ user.status }}</td>
           <td>
-            <button class="btnEnableDisable">Enable or Disable</button>
+            <button class="btnEnableDisable" v-on:click.prevent="flipStatus(user.id)" v-if="user.status == 'Active'">Disable</button>
+            <button class="btnEnableDisable" v-on:click.prevent="flipStatus(user.id)" v-if="user.status == 'Disabled'">Enable</button>
           </td>
         </tr>
       </tbody>
     </table>
 
     <div class="all-actions">
-      <button>Enable Users</button>
-      <button>Disable Users</button>
-      <button>Delete Users</button>
+      <button v-bind:disabled ="{true : this.actionButtons}">Enable Users</button>
+      <button v-bind:disabled ="{true : this.actionButtons}">Disable Users</button>
+      <button v-bind:disabled ="{true : this.actionButtons}">Delete Users</button>
     </div>
 
 
@@ -131,6 +132,8 @@ export default {
         emailAddress: "",
         status: "Active"
       },
+      selectedUserIds: [],
+      showActionButtons: false,
       users: [
         {
           id: 1,
@@ -192,6 +195,18 @@ export default {
     resetForm() {
       this.newUser = {};
       this.showForm = false;
+    },
+    flipStatus(idToMatch) {
+      this.users.forEach((user) => {
+        if (user.id == idToMatch) {
+          if (user.status == 'Active') {
+            user.status = 'Disabled';
+          } else {
+            user.status = 'Active';
+          }
+        }
+      });
+      console.log(idToMatch);
     }
   },
   computed: {
@@ -231,6 +246,15 @@ export default {
         );
       }
       return filteredUsers;
+    },
+    actionButtonDisabled() {
+      let actionButtons = this.showActionButtons;
+      if (this.selectedUserIds.length === 0) {
+        actionButtons = true;
+      } else {
+        actionButtons = false;
+      }
+      return actionButtons;
     }
   }
 };
