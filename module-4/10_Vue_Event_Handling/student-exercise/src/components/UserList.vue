@@ -63,7 +63,7 @@
 
     <div class="all-actions">
       <button v-bind:disabled=actionButtonsDisabled v-on:click.prevent="enableUsers()">Enable Users</button>
-      <button v-bind:disabled=actionButtonsDisabled>Disable Users</button>
+      <button v-bind:disabled=actionButtonsDisabled v-on:click.prevent="disableUsers()">Disable Users</button>
       <button v-bind:disabled=actionButtonsDisabled>Delete Users</button>
     </div>
 
@@ -223,6 +223,20 @@ export default {
         this.users.forEach((user) => {
           if (user.id == idToMatch) {
             user.status = 'Active';
+          }
+        });
+      }
+      // Empty selectedUserIds[] array.
+      for (let x = 0; x < this.selectedUserIds.length; x++) {
+        this.selectedUserIds.shift();
+      }
+    },
+    disableUsers() {
+      for (let x = 0; x < this.selectedUserIds.length; x++) {
+        let idToMatch = this.selectedUserIds[x];
+        this.users.forEach((user) => {
+          if (user.id == idToMatch) {
+            user.status = 'Disabled';
           }
         });
       }
