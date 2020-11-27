@@ -64,7 +64,7 @@
     <div class="all-actions">
       <button v-bind:disabled=actionButtonsDisabled v-on:click.prevent="enableUsers()">Enable Users</button>
       <button v-bind:disabled=actionButtonsDisabled v-on:click.prevent="disableUsers()">Disable Users</button>
-      <button v-bind:disabled=actionButtonsDisabled>Delete Users</button>
+      <button v-bind:disabled=actionButtonsDisabled v-on:click.prevent="deleteUsers()">Delete Users</button>
     </div>
 
 
@@ -244,6 +244,36 @@ export default {
       for (let x = 0; x < this.selectedUserIds.length; x++) {
         this.selectedUserIds.shift();
       }
+    },
+    deleteUsers() {
+      console.log('Deleting Selected Users!');
+
+      let tempUsers = this.users;
+      tempUsers = tempUsers.filter((user) => {
+        for (let i = 0; i < this.selectedUserIds.length; i++) {
+          if (user.id == this.selectedUserIds[i]) {
+            //this.selectedUsersIds.shift();
+            return false; 
+          }
+        }
+        return true;
+      });
+      this.users = tempUsers;
+    },
+    xdeleteUsers() {
+      console.log('Deleting Selected Users!');
+
+      let tempUsers = this.users;
+      tempUsers = tempUsers.filter((u) => {
+        for (let i = 0; i < this.selectedUserIds.length; i++) {
+          if (u.id == this.selectedUserIds[i]) {
+            this.selectedUsersIds.shift();
+            return false; 
+          }
+        }
+        return true;
+      });
+      this.users = tempUsers;
     }
   },
   computed: {
