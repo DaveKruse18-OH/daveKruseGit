@@ -38,13 +38,15 @@
           </td>
           <td>&nbsp;</td>
         </tr>
+        <!-- This is it (below). -->
         <tr
           v-for="user in filteredList"
           v-bind:key="user.id"
-          v-bind:class="{ disabled: user.status === 'Disabled' }"
-        >
+          v-bind:class="{ disabled: user.status === 'Disabled' }">
           <td>
-            <input type="checkbox" v-bind:id="user.id" v-bind:value="user.id" />
+            <input type="checkbox" v-bind:id="user.id"
+              v-model="myCheckBox"
+              v-on:click.stop="toggleCheckBox(user.id)"/>
           </td>
           <td>{{ user.firstName }}</td>
           <td>{{ user.lastName }}</td>
@@ -60,9 +62,9 @@
     </table>
 
     <div class="all-actions">
-      <button v-bind:disabled ="{true : this.actionButtons}">Enable Users</button>
-      <button v-bind:disabled ="{true : this.actionButtons}">Disable Users</button>
-      <button v-bind:disabled ="{true : this.actionButtons}">Delete Users</button>
+      <button v-bind:disabled=actionButtonsDisabled>Enable Users</button>
+      <button v-bind:disabled=actionButtonsDisabled>Disable Users</button>
+      <button v-bind:disabled=actionButtonsDisabled>Delete Users</button>
     </div>
 
 
@@ -134,6 +136,7 @@ export default {
       },
       selectedUserIds: [],
       showActionButtons: false,
+      myCheckBox: false,
       users: [
         {
           id: 1,
@@ -207,6 +210,11 @@ export default {
         }
       });
       console.log(idToMatch);
+    },
+    toggleCheckBox(id) {
+      this.selectedUserIds.unshift(id);
+      this.myCheckBox = true;
+      console.log(id);
     }
   },
   computed: {
@@ -247,7 +255,7 @@ export default {
       }
       return filteredUsers;
     },
-    actionButtonDisabled() {
+    actionButtonsDisabled() {
       let actionButtons = this.showActionButtons;
       if (this.selectedUserIds.length === 0) {
         actionButtons = true;
