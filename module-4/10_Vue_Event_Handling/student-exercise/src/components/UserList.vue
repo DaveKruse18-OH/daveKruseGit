@@ -62,7 +62,7 @@
     </table>
 
     <div class="all-actions">
-      <button v-bind:disabled=actionButtonsDisabled>Enable Users</button>
+      <button v-bind:disabled=actionButtonsDisabled v-on:click.prevent="enableUsers()">Enable Users</button>
       <button v-bind:disabled=actionButtonsDisabled>Disable Users</button>
       <button v-bind:disabled=actionButtonsDisabled>Delete Users</button>
     </div>
@@ -134,7 +134,7 @@ export default {
         emailAddress: "",
         status: "Active"
       },
-      selectedUserIds: [],
+      selectedUserIds: [1, 3, 5],
       showActionButtons: false,
       myCheckBox: false,
       users: [
@@ -192,6 +192,7 @@ export default {
   },
   methods: {
     addNewUser() {
+      this.newUser.id = this.users.length + 1;
       this.users.unshift(this.newUser);
       this.resetForm();
     },
@@ -215,6 +216,20 @@ export default {
       this.selectedUserIds.unshift(id);
       this.myCheckBox = true;
       console.log(id);
+    },
+    enableUsers() {
+      for (let x = 0; x < this.selectedUserIds.length; x++) {
+        let idToMatch = this.selectedUserIds[x];
+        this.users.forEach((user) => {
+          if (user.id == idToMatch) {
+            user.status = 'Active';
+          }
+        });
+      }
+      // Empty selectedUserIds[] array.
+      for (let x = 0; x < this.selectedUserIds.length; x++) {
+        this.selectedUserIds.shift();
+      }
     }
   },
   computed: {
@@ -264,6 +279,14 @@ export default {
       }
       return actionButtons;
     }
+    //toggleCheckBox() {
+      //let userIds = this.selectedUserIds;
+      //let chkbx = this.myCheckBox;
+      //userIds.unshift(this.id);
+      //chkbx = true;
+      //console.log(this.id);
+      //return chkbx;
+    //}
   }
 };
 </script>
