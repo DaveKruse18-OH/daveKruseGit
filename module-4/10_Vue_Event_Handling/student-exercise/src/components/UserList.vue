@@ -15,7 +15,7 @@
       <tbody>
         <tr>
           <td>
-            <input type="checkbox" id="selectAll" />
+            <input type="checkbox" id="selectAll" v-on:click="toggleAllCheckBox()"/>
           </td>
           <td>
             <input type="text" id="firstNameFilter" v-model="filter.firstName" />
@@ -45,8 +45,7 @@
           v-bind:class="{ disabled: user.status === 'Disabled' }">
           <td>
             <input type="checkbox" v-bind:id="user.id"
-              v-model="myCheckBox"
-              v-on:click.stop="toggleCheckBox(user.id)"/>
+              v-on:click="toggleCheckBox(user.id)"/>
           </td>
           <td>{{ user.firstName }}</td>
           <td>{{ user.lastName }}</td>
@@ -136,7 +135,6 @@ export default {
       },
       selectedUserIds: [],
       showActionButtons: false,
-      myCheckBox: false,
       users: [
         {
           id: 1,
@@ -223,12 +221,13 @@ export default {
           }
         });
         this.selectedUserIds = tempIds;
-        this.myCheckBox = false; 
       } else {
         this.selectedUserIds.unshift(idToToggle);
-        this.myCheckBox = true;
       }
       console.log(idToToggle);
+    },
+    toggleAllCheckBox() {
+      console.log('ToggleAllCheckBox');
     },
     enableUsers() {
       for (let x = 0; x < this.selectedUserIds.length; x++) {
@@ -239,7 +238,7 @@ export default {
           }
         });
       }
-      this.selectedUserIds = [];
+      this.clearBoard();
     },
     disableUsers() {
       for (let x = 0; x < this.selectedUserIds.length; x++) {
@@ -250,11 +249,7 @@ export default {
           }
         });
       }
-      // Empty selectedUserIds[] array.
-      this.selectedUserIds = [];
-      //for (let x = 0; x < this.selectedUserIds.length; x++) {
-      //  this.selectedUserIds.shift();
-      //}
+      this.clearBoard();
     },
     deleteUsers() {
       console.log('Deleting Selected Users!');
@@ -270,7 +265,18 @@ export default {
         return true;
       });
       this.users = tempUsers;
+      this.clearBoard();
+    },
+    clearBoard() {
       this.selectedUserIds = [];
+
+      let inputs = document.querySelectorAll('input');
+      inputs.forEach(item => {
+        console.log(item.id, item.checked);
+        if (item.type == "checkbox") {
+          item.checked = false;
+        }
+      });
     }
   },
   computed: {
