@@ -239,11 +239,7 @@ export default {
           }
         });
       }
-      // Empty selectedUserIds[] array.
-      this.selectedUsersIds = [];
-      //for (let x = 0; x < this.selectedUserIds.length; x++) {
-      //  this.selectedUserIds.shift();
-      //}
+      this.selectedUserIds = [];
     },
     disableUsers() {
       for (let x = 0; x < this.selectedUserIds.length; x++) {
