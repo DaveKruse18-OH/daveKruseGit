@@ -134,7 +134,7 @@ export default {
         emailAddress: "",
         status: "Active"
       },
-      selectedUserIds: [1, 3, 5],
+      selectedUserIds: [],
       showActionButtons: false,
       myCheckBox: false,
       users: [
@@ -212,10 +212,23 @@ export default {
       });
       console.log(idToMatch);
     },
-    toggleCheckBox(id) {
-      this.selectedUserIds.unshift(id);
-      this.myCheckBox = true;
-      console.log(id);
+    toggleCheckBox(idToToggle) {
+      if (this.selectedUserIds.includes(idToToggle)) {
+        let tempIds = this.selectedUserIds;
+        tempIds = tempIds.filter((id) => {
+          if (id == idToToggle) {
+            return false;
+          } else {
+            return true;
+          }
+        });
+        this.selectedUserIds = tempIds;
+        this.myCheckBox = false; 
+      } else {
+        this.selectedUserIds.unshift(idToToggle);
+        this.myCheckBox = true;
+      }
+      console.log(idToToggle);
     },
     enableUsers() {
       for (let x = 0; x < this.selectedUserIds.length; x++) {
@@ -227,9 +240,10 @@ export default {
         });
       }
       // Empty selectedUserIds[] array.
-      for (let x = 0; x < this.selectedUserIds.length; x++) {
-        this.selectedUserIds.shift();
-      }
+      this.selectedUsersIds = [];
+      //for (let x = 0; x < this.selectedUserIds.length; x++) {
+      //  this.selectedUserIds.shift();
+      //}
     },
     disableUsers() {
       for (let x = 0; x < this.selectedUserIds.length; x++) {
@@ -241,9 +255,10 @@ export default {
         });
       }
       // Empty selectedUserIds[] array.
-      for (let x = 0; x < this.selectedUserIds.length; x++) {
-        this.selectedUserIds.shift();
-      }
+      this.selectedUserIds = [];
+      //for (let x = 0; x < this.selectedUserIds.length; x++) {
+      //  this.selectedUserIds.shift();
+      //}
     },
     deleteUsers() {
       console.log('Deleting Selected Users!');
@@ -259,21 +274,7 @@ export default {
         return true;
       });
       this.users = tempUsers;
-    },
-    xdeleteUsers() {
-      console.log('Deleting Selected Users!');
-
-      let tempUsers = this.users;
-      tempUsers = tempUsers.filter((u) => {
-        for (let i = 0; i < this.selectedUserIds.length; i++) {
-          if (u.id == this.selectedUserIds[i]) {
-            this.selectedUsersIds.shift();
-            return false; 
-          }
-        }
-        return true;
-      });
-      this.users = tempUsers;
+      this.selectedUserIds = [];
     }
   },
   computed: {
@@ -316,7 +317,7 @@ export default {
     },
     actionButtonsDisabled() {
       let actionButtons = this.showActionButtons;
-      if (this.selectedUserIds.length === 0) {
+      if (this.selectedUserIds.length == 0) {
         actionButtons = true;
       } else {
         actionButtons = false;
