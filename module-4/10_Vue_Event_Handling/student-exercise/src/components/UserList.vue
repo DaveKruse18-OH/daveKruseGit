@@ -228,6 +228,13 @@ export default {
     },
     toggleAllCheckBox() {
       console.log('ToggleAllCheckBox');
+
+      let element = document.getElementById("selectAll");
+      if (element.checked == true) {
+        this.fillBoard();
+      } else {
+        this.clearBoard();
+      }
     },
     enableUsers() {
       for (let x = 0; x < this.selectedUserIds.length; x++) {
@@ -277,6 +284,21 @@ export default {
           item.checked = false;
         }
       });
+    },
+    fillBoard() {
+      this.selectedUserIds = [];
+      this.users.forEach((user) => {
+        this.selectedUserIds.unshift(user.id);
+      });
+
+      let inputs = document.querySelectorAll("input");
+      inputs.forEach(item => {
+        console.log(item.id, item.checked);
+        if (item.type == "checkbox") {
+          item.checked = true;
+        }
+      });
+
     }
   },
   computed: {
