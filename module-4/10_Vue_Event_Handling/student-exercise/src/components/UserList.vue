@@ -287,7 +287,7 @@ export default {
     },
     fillBoard() {
       this.selectedUserIds = [];
-      this.users.forEach((user) => {
+      this.filteredList.forEach((user) => {
         this.selectedUserIds.unshift(user.id);
       });
 
