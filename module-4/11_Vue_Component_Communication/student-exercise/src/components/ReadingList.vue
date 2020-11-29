@@ -15,15 +15,6 @@ export default {
     name: 'reading-list',
     components: {
       BookCard
-    //},
-    //computed: {
-    //  filteredBooks() {
-    //    const booksFilter = -1;
-    //    const books = [];
-    //    return books.filter(book => {
-    //      return booksFilter === 0 ? true : booksFilter === book.title;
-    //    });
-    //  }
     }
 }
 </script>
