@@ -5,6 +5,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    showForm: true,
     books: [
       {
         title: "Kafka on the Shore",

@@ -1,7 +1,7 @@
 
 
 <template>
-  <div class="card">
+  <div class="card" id="bookcard">
     <h2 class="book-title">{{book.title}}</h2>
     <img v-if="book.isbn" v-bind:src="'http://covers.openlibrary.org/b/isbn/' + book.isbn + '-M.jpg'" />
     <h3 class="book-author">{{book.author}}</h3>
@@ -16,7 +16,16 @@ export default {
     props: ["book"],
     methods: {
         flipStatus(value) {
+            //this.setClasses();
             this.$store.commit('SET_READ_STATUS', {book: this.book, value: value});
+        },
+        setClasses() {
+            let element = document.getElementsByTagName("book-card");
+            if (element.classList.contains("card-read")) {
+                element.classList.remove("card-read");
+            } else {
+                element.classList.add("card-read");
+            }
         }
     }
 }
@@ -31,7 +40,7 @@ export default {
     margin: 20px;
 }
 
-.card.read {
+.card-read {
     background-color: lightgray;
 }
 
