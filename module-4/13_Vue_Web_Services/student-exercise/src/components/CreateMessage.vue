@@ -32,7 +32,13 @@ export default {
   },
   methods: {
     saveMessage() {
+    messageService.add(this.message).then(response => {
+        if (response.status === 200) {
+          this.$router.push('/${message.topicId}');
+        }
+      }).catch(error => {
 
+      });
     }
   }
 };
