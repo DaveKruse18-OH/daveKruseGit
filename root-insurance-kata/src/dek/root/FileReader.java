@@ -6,13 +6,14 @@ import java.util.Scanner;
 
 public class FileReader {
 	
+	String inputFileName;
 	Scanner input;
 	
 	/*
 	 * File Reader class default constructor.
 	 */
-	public FileReader() {
-		// Do nothing.
+	public FileReader(String inputFileName) {
+		this.inputFileName = inputFileName;
 	}
 	
 	/*
@@ -20,7 +21,7 @@ public class FileReader {
 	 * Input file is hard coded.
 	 */
 	public void OpenFile() throws FileNotFoundException {
-		File file = new File("c:\\Users\\dave_\\gitRepository\\daveKruseGit\\root-insurance-kata\\src\\dek\\root\\input.txt");
+		File file = new File("c:\\Users\\dave_\\gitRepository\\daveKruseGit\\root-insurance-kata\\src\\dek\\root\\" + inputFileName);
 		input = new Scanner(file);
 	
 	}
