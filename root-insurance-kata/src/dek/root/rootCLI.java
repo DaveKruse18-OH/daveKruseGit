@@ -7,6 +7,12 @@ public class rootCLI {
 		//System.out.println("Hello world!");
 		
 		FileReader fr = new FileReader();
-		fr.ReadFile();
+		fr.OpenFile();
+		
+		String nextLine = "";
+		while (nextLine != null) {
+			nextLine = fr.ReadNextLine();
+			System.out.println(nextLine);
+		}
 	}
 }
