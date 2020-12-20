@@ -14,8 +14,7 @@ public class DriverTest {
 		String inputString = "testName";
 		driver.setName(inputString);
 		String result = driver.getName();
+		
 		assertEquals(inputString, result);
 	}
-
 }
-
