@@ -26,8 +26,8 @@ public class RootController {
 		buildMemoryWorkingLists();
 		cleanLists();
 		generateReport();
-		
-		showLists();
+		fr.CloseFile();
+		//showLists();
 	}
 	
 	/*
@@ -66,7 +66,7 @@ public class RootController {
 				tl = tripList.getTripList();
 				itr = tl.iterator();
 			}
-			System.out.println("mph: " + mph);
+			//System.out.println("mph: " + mph);
 		}
 		//}
 		//catch(Exception e) {

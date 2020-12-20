@@ -23,7 +23,7 @@ public class FileReader {
 	public void OpenFile() throws FileNotFoundException {
 		//File file = new File("c:\\Users\\dave_\\gitRepository\\daveKruseGit\\root-insurance-kata\\src\\dek\\root\\" + inputFileName);
 		File file = new File(inputFileName);
-		System.out.println("Absolute path: " + file.getAbsolutePath());
+		//System.out.println("Absolute path: " + file.getAbsolutePath());
 		input = new Scanner(file);
 	
 	}

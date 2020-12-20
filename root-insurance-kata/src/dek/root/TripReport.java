@@ -9,8 +9,8 @@ public class TripReport {
 	private List<DriverTripReport> driverReport = new ArrayList<DriverTripReport>();
 	
 	public void buildUserReport(String driverName, List<Trip> tripList) {
-		System.out.println("User Name: " + driverName);
-		System.out.println("tripList: " + tripList);
+		//System.out.println("User Name: " + driverName);
+		//System.out.println("tripList: " + tripList);
 		
 		// Process the drivers one at a time.
 		// Build working list for current driver of all their trips.
@@ -38,8 +38,6 @@ public class TripReport {
 			dtr.setAvgMph((60 / totalUserTime) * totalUserMiles);
 		}
 		driverReport.add(dtr);
-		
-		System.out.println("break");
 	}
 	
 	public void displayFinalReport() {
@@ -62,7 +60,7 @@ public class TripReport {
 			}
 			
 			// Report!
-			System.out.printf("Report: %s %-1.0f miles @ %-1.0f mph\n",
+			System.out.printf("%s %-1.0f miles @ %-1.0f mph\n",
 					driverToReport.getDriverName(),
 					driverToReport.getTotalMiles(),
 					driverToReport.getAvgMph());
