@@ -62,7 +62,7 @@ public class RootController {
 			double mph = tripList.getMilesPerHour(temp);
 			if ((mph < 5.0) || (mph > 100.0)) {
 				tripList.removeTrip(temp);
-				// Reset list after removal.
+				// Reset list after removal of element.
 				tl = tripList.getTripList();
 				itr = tl.iterator();
 			}
@@ -80,7 +80,18 @@ public class RootController {
 	 * 
 	 */
 	private void generateReport() {
+		TripReport tr = new TripReport();
+		//List<Driver> dl = driverList.getDriversList();
+		List<Trip> tl = tripList.getTripList();
 		
+		// Process the drivers one at a time.
+		List<Driver> dl = driverList.getDriversList();
+		Iterator<Driver> itr = dl.iterator();
+		while (itr.hasNext()) {
+			Driver nextDriver = itr.next();
+			String driverName = nextDriver.getName();
+			tr.buildUserReport(driverName, tl);
+		}
 	}
 	
 	private void showLists() {
