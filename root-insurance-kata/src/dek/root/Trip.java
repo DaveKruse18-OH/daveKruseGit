@@ -1,5 +1,13 @@
 package dek.root;
 
+/*
+ * Trip object for Root Insurance Kata
+ * 
+ * @author	Dave Kruse
+ * @version 1.0
+ * @since	2020-12-20
+ * 
+ */
 public class Trip {
 	private String driverName;
 	private int StartHour;
@@ -7,6 +15,10 @@ public class Trip {
 	private int StopHour;
 	private int StopMinute;
 	private double miles;
+	
+	/*
+	 * Following are basic object getters and setters.
+	 */
 	public String getDriverName() {
 		return driverName;
 	}
@@ -43,7 +55,4 @@ public class Trip {
 	public void setMiles(double miles) {
 		this.miles = miles;
 	}
-	
-	
-	
 }

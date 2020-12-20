@@ -3,11 +3,24 @@ package dek.root;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+ * Trip list object for Root Insurance Kata
+ * 
+ * @author	Dave Kruse
+ * @version 1.0
+ * @since	2020-12-20
+ * 
+ */
 public class TripList {
 	private List<Trip> tripList = new ArrayList<Trip>();
 
 	/*
-	 * 
+	 * Adds a Trip object to the tripList.
+	 * @param String - driver name of the object being added.
+	 * @param String - start time of the object being added.
+	 * @param String - stop time of the object being added.
+	 * @param String - miles of the object being added.
+	 *
 	 */
 	public void addTrip(String name, String start, String stop, String miles) {
 		Trip newTrip = new Trip();
@@ -33,14 +46,17 @@ public class TripList {
 	}
 	
 	/*
-	 * 
+	 * Removes Trip object from the current trip list.
+	 * @param Trip - trip to remove.
 	 */
 	public void removeTrip(Trip tripToRemove) {
 		tripList.remove(tripToRemove);
 	}
 	
 	/*
-	 * 
+	 * Gets time, in minutes, of the trip being handed in.
+	 * @param Trip - trip being requested.
+	 * @return - minutes of total time of trip.
 	 */
 	private int getTime(Trip trip) {
 		int startMinute = trip.getStartMinute();
@@ -54,14 +70,18 @@ public class TripList {
 	}
 	
 	/*
-	 * 
+	 * Gets distance of the trip being handed in.
+	 * @param Trip - trip being requested.
+	 * @return double - total miles of the trip.
 	 */
 	private double getDistance(Trip trip) {
 		return trip.getMiles();
 	}
 	
 	/*
-	 * 
+	 * Gets mph of the trip being handed in.
+	 * @param Trip - trip being requested.
+	 * @return double - average mph of the trip.
 	 */
 	public double getMilesPerHour(Trip trip) {
 		double timeMinutes = this.getTime(trip);
@@ -73,17 +93,18 @@ public class TripList {
 	}
 	
 	/*
-	 * 
+	 * Gets the current trip list.
+	 * @return List<Trip> - current list of Trip objects.
 	 */
 	public List<Trip> getTripList() {
 		return tripList;
 	}
 
 	/*
-	 * 
+	 * Sets the current trip list.
+	 * @param List<Trip> - new trip list.
 	 */
 	public void setTripList(List<Trip> tripList) {
 		this.tripList = tripList;
 	}
-	
 }

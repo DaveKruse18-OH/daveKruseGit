@@ -4,6 +4,14 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
+/*
+ * File Reader object for Root Insurance Kata
+ * 
+ * @author	Dave Kruse
+ * @version 1.0
+ * @since	2020-12-20
+ * 
+ */
 public class FileReader {
 	
 	String inputFileName;
@@ -21,9 +29,7 @@ public class FileReader {
 	 * Input file is hard coded.
 	 */
 	public void OpenFile() throws FileNotFoundException {
-		//File file = new File("c:\\Users\\dave_\\gitRepository\\daveKruseGit\\root-insurance-kata\\src\\dek\\root\\" + inputFileName);
 		File file = new File(inputFileName);
-		//System.out.println("Absolute path: " + file.getAbsolutePath());
 		input = new Scanner(file);
 	
 	}

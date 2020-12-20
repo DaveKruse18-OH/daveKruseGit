@@ -4,14 +4,25 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+/*
+ * Trip report object for Root Insurance Kata
+ * 
+ * @author	Dave Kruse
+ * @version 1.0
+ * @since	2020-12-20
+ * 
+ */
 public class TripReport {
 	private List<Trip> workingTripList = new ArrayList<Trip>();
 	private List<DriverTripReport> driverReport = new ArrayList<DriverTripReport>();
 	
+	/*
+	 * Builds working list by driver of all of their trips.
+	 * @param String - driver name of list to build.
+	 * @param List<Trip> - current comprehensive trip list to pull current driver's
+	 * trips from.
+	 */
 	public void buildUserReport(String driverName, List<Trip> tripList) {
-		//System.out.println("User Name: " + driverName);
-		//System.out.println("tripList: " + tripList);
-		
 		// Process the drivers one at a time.
 		// Build working list for current driver of all their trips.
 		workingTripList.clear();     // Clear to start over with the next driver.
@@ -40,11 +51,12 @@ public class TripReport {
 		driverReport.add(dtr);
 	}
 	
+	/*
+	 * Method to display the final report.
+	 */
 	public void displayFinalReport() {
 		// Look through final list for the driver with the most miles.
 		DriverTripReport driverToReport = null;
-		//double milesDriven = 0.0;
-		
 		
 		while (!driverReport.isEmpty()) {
 			double milesDriven = 0.0;
@@ -60,15 +72,25 @@ public class TripReport {
 			}
 			
 			// Report!
-			System.out.printf("%s %-1.0f miles @ %-1.0f mph\n",
+			if (driverToReport.getTotalMiles() != 0) {
+				System.out.printf("%s %-1.0f miles @ %-1.0f mph\n",
 					driverToReport.getDriverName(),
 					driverToReport.getTotalMiles(),
 					driverToReport.getAvgMph());
+				//driverReport.remove(driverToReport);
+			} else {
+				System.out.printf("%s %-1.0f miles\n",
+					driverToReport.getDriverName(),
+					driverToReport.getTotalMiles());
+			}
 			driverReport.remove(driverToReport);
-			//itr = driverReport.iterator();	// Reset iterator.
 		}
 	}
 	
+	/*
+	 * Private method to calculate the total time for a specific driver.
+	 * @return double - total time driven for a specific driver, in minutes.
+	 */
 	private double calculateTotalTime() {
 		// Process working list.
 		//System.out.println("break");
@@ -89,6 +111,10 @@ public class TripReport {
 		return totalTime;
 	}
 	
+	/*
+	 * Private method to calculate the total miles for a specific driver.
+	 * return double - total miles driven for a specific driver.
+	 */
 	private double calculateTotalMiles() {
 		double totalMiles = 0.0;
 		Iterator<Trip> itr = workingTripList.iterator();

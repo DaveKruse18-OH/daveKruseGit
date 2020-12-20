@@ -4,6 +4,14 @@ import java.io.FileNotFoundException;
 import java.util.Iterator;
 import java.util.List;
 
+/*
+ * Controller object for Root Insurance Kata
+ * 
+ * @author	Dave Kruse
+ * @version 1.0
+ * @since	2020-12-20
+ * 
+ */
 public class RootController {
 	private FileReader fr;
 	private String inputFileName;
@@ -11,14 +19,14 @@ public class RootController {
 	private TripList tripList = new TripList();
 	
 	/*
-	 * 
+	 * Sets the input file name to process.
 	 */
 	public RootController(String inputFileName) {
 		this.inputFileName = inputFileName;
 	}
 	
 	/*
-	 * 
+	 * Opens and process the provided input file.
 	 */
 	public void Initialize() throws FileNotFoundException {
 		fr = new FileReader(inputFileName);
@@ -31,7 +39,7 @@ public class RootController {
 	}
 	
 	/*
-	 * 
+	 * Builds the working list of drivers and trips in memory.
 	 */
 	private void buildMemoryWorkingLists() {
 		String nextLine = "";
@@ -52,9 +60,12 @@ public class RootController {
 		}
 	}
 	
+	/*
+	 * Removes the trips that are automatically eliminated via the rules.
+	 * That is trips that average < 5 mph or > 100 mph.
+	 */
 	private void cleanLists() {
 		// Process Trip List eliminating trips that average <5 mph or >100 mph.
-		//try {
 		List<Trip> tl = tripList.getTripList();
 		Iterator<Trip> itr = tl.iterator();
 		while (itr.hasNext()) {
@@ -66,18 +77,11 @@ public class RootController {
 				tl = tripList.getTripList();
 				itr = tl.iterator();
 			}
-			//System.out.println("mph: " + mph);
 		}
-		//}
-		//catch(Exception e) {
-			// Error iterating beyond end of list due to removal of element.
-			// Eat the error.
-		//	System.out.println("Error: " + e);
-		//}
 	}
 	
 	/*
-	 * 
+	 * Method that generates the final report.
 	 */
 	private void generateReport() {
 		TripReport tr = new TripReport();
@@ -96,6 +100,10 @@ public class RootController {
 		tr.displayFinalReport();
 	}
 	
+	/*
+	 * Method that is currently not called, but used in debugging
+	 * (see line #30 above).
+	 */
 	private void showLists() {
 		List<Driver> dl = driverList.getDriversList();
 		Iterator<Driver> itr = dl.iterator();
