@@ -37,9 +37,38 @@ public class TripReport {
 		} else {
 			dtr.setAvgMph((60 / totalUserTime) * totalUserMiles);
 		}
-		
 		driverReport.add(dtr);
+		
 		System.out.println("break");
+	}
+	
+	public void displayFinalReport() {
+		// Look through final list for the driver with the most miles.
+		DriverTripReport driverToReport = null;
+		//double milesDriven = 0.0;
+		
+		
+		while (!driverReport.isEmpty()) {
+			double milesDriven = 0.0;
+			// Loop through the driverTripReport list, reporting on each driver, till it is exhausted.
+			Iterator<DriverTripReport> itr = driverReport.iterator();
+			while (itr.hasNext()) {
+				DriverTripReport nextDriverReport = itr.next();
+				double tempMilesDriven = nextDriverReport.getTotalMiles();
+				if (tempMilesDriven >= milesDriven) {
+					driverToReport = nextDriverReport;
+					milesDriven = driverToReport.getTotalMiles();
+				}
+			}
+			
+			// Report!
+			System.out.printf("Report: %s %f miles @ %f mph\n",
+					driverToReport.getDriverName(),
+					driverToReport.getTotalMiles(),
+					driverToReport.getAvgMph());
+			driverReport.remove(driverToReport);
+			//itr = driverReport.iterator();	// Reset iterator.
+		}
 	}
 	
 	private double calculateTotalTime() {

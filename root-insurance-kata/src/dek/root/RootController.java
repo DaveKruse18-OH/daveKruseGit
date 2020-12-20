@@ -92,6 +92,8 @@ public class RootController {
 			String driverName = nextDriver.getName();
 			tr.buildUserReport(driverName, tl);
 		}
+		
+		tr.displayFinalReport();
 	}
 	
 	private void showLists() {
