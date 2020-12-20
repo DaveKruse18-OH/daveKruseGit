@@ -62,7 +62,7 @@ public class TripReport {
 			}
 			
 			// Report!
-			System.out.printf("Report: %s %f miles @ %f mph\n",
+			System.out.printf("Report: %s %-1.0f miles @ %-1.0f mph\n",
 					driverToReport.getDriverName(),
 					driverToReport.getTotalMiles(),
 					driverToReport.getAvgMph());
