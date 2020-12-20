@@ -4,14 +4,16 @@ import java.io.FileNotFoundException;
 import java.util.Iterator;
 import java.util.List;
 
-public class RootCLI {
-	FileReader fr;
-	String inputFileName;
+public class RootController {
+	private FileReader fr;
+	private String inputFileName;
+	private DriverList driverList = new DriverList();
+	private TripList tripList = new TripList();
 	
 	/*
 	 * 
 	 */
-	public RootCLI(String inputFileName) {
+	public RootController(String inputFileName) {
 		this.inputFileName = inputFileName;
 	}
 	
@@ -21,17 +23,18 @@ public class RootCLI {
 	public void Initialize() throws FileNotFoundException {
 		fr = new FileReader(inputFileName);
 		fr.OpenFile();
-		processInputFile();
+		buildMemoryWorkingLists();
+		cleanLists();
+		generateReport();
+		
+		showLists();
 	}
 	
 	/*
 	 * 
 	 */
-	private void processInputFile() {
-		DriverList driverList = new DriverList();
-		TripList tripList = new TripList();
+	private void buildMemoryWorkingLists() {
 		String nextLine = "";
-		
 		while (nextLine != null) {
 			nextLine = fr.ReadNextLine();
 			if (nextLine != null) {
@@ -47,7 +50,40 @@ public class RootCLI {
 				}
 			}
 		}
+	}
+	
+	private void cleanLists() {
+		// Process Trip List eliminating trips that average <5 mph or >100 mph.
+		//try {
+		List<Trip> tl = tripList.getTripList();
+		Iterator<Trip> itr = tl.iterator();
+		while (itr.hasNext()) {
+			Trip temp = itr.next();
+			double mph = tripList.getMilesPerHour(temp);
+			if ((mph < 5.0) || (mph > 100.0)) {
+				tripList.removeTrip(temp);
+				// Reset list after removal.
+				tl = tripList.getTripList();
+				itr = tl.iterator();
+			}
+			System.out.println("mph: " + mph);
+		}
+		//}
+		//catch(Exception e) {
+			// Error iterating beyond end of list due to removal of element.
+			// Eat the error.
+		//	System.out.println("Error: " + e);
+		//}
+	}
+	
+	/*
+	 * 
+	 */
+	private void generateReport() {
 		
+	}
+	
+	private void showLists() {
 		List<Driver> dl = driverList.getDriversList();
 		Iterator<Driver> itr = dl.iterator();
 		while (itr.hasNext()) {

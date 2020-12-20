@@ -10,7 +10,7 @@ public class FileReader {
 	Scanner input;
 	
 	/*
-	 * File Reader class default constructor.
+	 * File Reader class constructor.
 	 */
 	public FileReader(String inputFileName) {
 		this.inputFileName = inputFileName;
@@ -21,7 +21,9 @@ public class FileReader {
 	 * Input file is hard coded.
 	 */
 	public void OpenFile() throws FileNotFoundException {
-		File file = new File("c:\\Users\\dave_\\gitRepository\\daveKruseGit\\root-insurance-kata\\src\\dek\\root\\" + inputFileName);
+		//File file = new File("c:\\Users\\dave_\\gitRepository\\daveKruseGit\\root-insurance-kata\\src\\dek\\root\\" + inputFileName);
+		File file = new File(inputFileName);
+		System.out.println("Absolute path: " + file.getAbsolutePath());
 		input = new Scanner(file);
 	
 	}

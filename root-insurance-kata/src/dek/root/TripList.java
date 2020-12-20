@@ -6,6 +6,9 @@ import java.util.List;
 public class TripList {
 	private List<Trip> tripList = new ArrayList<Trip>();
 
+	/*
+	 * 
+	 */
 	public void addTrip(String name, String start, String stop, String miles) {
 		Trip newTrip = new Trip();
 
@@ -29,10 +32,56 @@ public class TripList {
 		tripList.add(newTrip);
 	}
 	
+	/*
+	 * 
+	 */
+	public void removeTrip(Trip tripToRemove) {
+		tripList.remove(tripToRemove);
+	}
+	
+	/*
+	 * 
+	 */
+	private int getTime(Trip trip) {
+		int startMinute = trip.getStartMinute();
+		int startHour = trip.getStartHour();
+		int startMinutes = (startHour * 60) + startMinute;
+		int stopMinute = trip.getStopMinute();
+		int stopHour = trip.getStopHour();
+		int stopMinutes = (stopHour * 60) + stopMinute;
+		
+		return stopMinutes - startMinutes;
+	}
+	
+	/*
+	 * 
+	 */
+	private double getDistance(Trip trip) {
+		return trip.getMiles();
+	}
+	
+	/*
+	 * 
+	 */
+	public double getMilesPerHour(Trip trip) {
+		double timeMinutes = this.getTime(trip);
+		double timeHours = (timeMinutes / 60);
+		double distanceMiles = this.getDistance(trip);
+		
+		// Return mph.
+		return (distanceMiles / timeHours);
+	}
+	
+	/*
+	 * 
+	 */
 	public List<Trip> getTripList() {
 		return tripList;
 	}
 
+	/*
+	 * 
+	 */
 	public void setTripList(List<Trip> tripList) {
 		this.tripList = tripList;
 	}

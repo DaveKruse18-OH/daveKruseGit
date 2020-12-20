@@ -9,7 +9,7 @@ public class main {
 	 * Reader object and then opening the input file.
 	 */
 	public static void main(String args[]) throws FileNotFoundException {
-		RootCLI cli = new RootCLI(args[0]);
-		cli.Initialize();
+		RootController cntlr = new RootController(args[0]);
+		cntlr.Initialize();
 	}
 }
