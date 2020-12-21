@@ -25,13 +25,6 @@ public class DriverList {
 	}
 	
 	/*
-	 * Stub for method to removeDriver.  Not needed at this time.
-	 */
-	public void removeDriver() {
-		
-	}
-	
-	/*
 	 * Returns the current list of drivers.
 	 * @return List<Driver> - returns list of Driver objects.
 	 */

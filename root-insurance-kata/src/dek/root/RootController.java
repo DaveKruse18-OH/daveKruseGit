@@ -28,14 +28,13 @@ public class RootController {
 	/*
 	 * Opens and process the provided input file.
 	 */
-	public void Initialize() throws FileNotFoundException {
+	public void InitializeAndRun() throws FileNotFoundException {
 		fr = new FileReader(inputFileName);
 		fr.OpenFile();
 		buildMemoryWorkingLists();
 		cleanLists();
 		generateReport();
 		fr.CloseFile();
-		//showLists();
 	}
 	
 	/*
@@ -98,28 +97,5 @@ public class RootController {
 		}
 		
 		tr.displayFinalReport();
-	}
-	
-	/*
-	 * Method that is currently not called, but used in debugging
-	 * (see line #30 above).
-	 */
-	private void showLists() {
-		List<Driver> dl = driverList.getDriversList();
-		Iterator<Driver> itr = dl.iterator();
-		while (itr.hasNext()) {
-			Driver tempDriver = itr.next();
-			System.out.println("Driver Name: " + tempDriver.getName());
-		}
-		
-		List<Trip> tl = tripList.getTripList();
-		Iterator<Trip> itr2 = tl.iterator();
-		while (itr2.hasNext()) {
-			Trip tempTrip = itr2.next();
-			System.out.println("Trip : " + tempTrip.getDriverName() + " " +
-					tempTrip.getStartHour() + ":" + tempTrip.getStartMinute() + " " +
-					tempTrip.getStopHour() + ":" + tempTrip.getStopMinute() + " " +
-					tempTrip.getMiles());
-		}
 	}
 }

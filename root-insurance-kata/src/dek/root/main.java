@@ -20,6 +20,6 @@ public class main {
 	 */
 	public static void main(String args[]) throws FileNotFoundException {
 		RootController cntlr = new RootController(args[0]);
-		cntlr.Initialize();
+		cntlr.InitializeAndRun();
 	}
 }
